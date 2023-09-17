@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "seccions",
+  "info": {
+    "singularName": "seccion",
+    "pluralName": "seccions",
+    "displayName": "Seccion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "seccions"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::lesson.lesson",
+      "mappedBy": "seccion"
+    },
+    "order": {
+      "type": "integer",
+      "required": true
+    },
+    "quizzes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quiz.quiz",
+      "mappedBy": "seccion"
+    }
+  }
+}

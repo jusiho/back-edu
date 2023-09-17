@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "video_progresses",
+  "info": {
+    "singularName": "video-progress",
+    "pluralName": "video-progresses",
+    "displayName": "Video_Progress",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lesson": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::lesson.lesson"
+    },
+    "videotime": {
+      "type": "integer"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

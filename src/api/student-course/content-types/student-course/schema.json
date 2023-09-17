@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_courses",
+  "info": {
+    "singularName": "student-course",
+    "pluralName": "student-courses",
+    "displayName": "Student_Course",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "video_progress": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::video-progress.video-progress"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "student_courses"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lessons",
+  "info": {
+    "singularName": "lesson",
+    "pluralName": "lessons",
+    "displayName": "Lesson",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "seccion": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::seccion.seccion",
+      "inversedBy": "lessons"
+    },
+    "videourl": {
+      "type": "string"
+    },
+    "order": {
+      "type": "integer",
+      "unique": false,
+      "required": true
+    },
+    "videotime": {
+      "type": "integer"
+    },
+    "timetext": {
+      "type": "string"
+    },
+    "preview": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "mode": {
+      "type": "enumeration",
+      "enum": [
+        "CONTENT",
+        "QUESTION"
+      ],
+      "required": false
+    }
+  }
+}

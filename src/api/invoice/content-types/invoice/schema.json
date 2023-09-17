@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "sales": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sale.sale",
+      "mappedBy": "invoice"
+    },
+    "state": {
+      "type": "enumeration",
+      "enum": [
+        "ONHOLD",
+        "PAID",
+        "PROCESSING",
+        "FAILED"
+      ]
+    },
+    "idpayment": {
+      "type": "string"
+    },
+    "method": {
+      "type": "enumeration",
+      "enum": [
+        "free",
+        "paid"
+      ]
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::currency.currency"
+    },
+    "payment_method": {
+      "type": "string"
+    }
+  }
+}
