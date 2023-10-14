@@ -1,0 +1,68 @@
+version: '1.0'
+services:
+  strapi:
+    container_name: strapi
+    build: .
+    image: mybackend
+    restart: unless-stopped
+    # command: npm run strapi export --no-compress
+    env_file: .env
+    environment:
+      DATABASE_CLIENT: ${DATABASE_CLIENT}
+      DATABASE_HOST: postgres
+      DATABASE_PORT: ${DB_PORT}
+      DATABASE_NAME: ${DB_NAME}
+      DATABASE_USERNAME: ${DB_USER}
+      DATABASE_PASSWORD: ${DB_PASSWD}
+      JWT_SECRET: ${JWT_SECRET}
+      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
+      APP_KEYS: ${APP_KEYS}
+      NODE_ENV: ${NODE_ENV}
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./yarn.lock:/opt/yarn.lock
+      - ./.env:/opt/app/.env
+      - ./public/uploads:/opt/app/public/uploads
+    ports:
+      - '1337:1337'
+    networks:
+      - strapi
+    depends_on:
+      - postgres
+      
+  postgres:
+    container_name: ${DB_HOST}
+    restart: unless-stopped
+    image: ${DB_IMAGE}:${DB_TAG}
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_PASSWORD=${DB_PASSWD}
+      - POSTGRES_USER=${DB_USER}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - strapi-data:/var/lib/postgresql/data/pgdata
+    networks:
+      - strapi
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pierreblas123@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "bistionpro357"
+    ports:
+      - "82:80"
+    depends_on:
+      - postgres
+      
+volumes:
+  strapi-data:
+
+networks:
+  strapi:
+    name: Strapi
+    driver: bridge
