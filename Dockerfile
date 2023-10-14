@@ -15,10 +15,6 @@ ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
 
-RUN yarn add pg
-RUN yarn add @strapi/plugin-graphql
-RUN yarn add @strapi/provider-email-nodemailer
-
 RUN yarn build
 
 # Creating final production image
