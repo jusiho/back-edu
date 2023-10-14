@@ -14,6 +14,11 @@ RUN yarn config set network-timeout 600000 -g && yarn install --production
 ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
+
+RUN yarn add pg
+RUN yarn add @strapi/plugin-graphql
+RUN yarn add @strapi/provider-email-nodemailer
+
 RUN yarn build
 
 # Creating final production image
@@ -26,8 +31,7 @@ WORKDIR /opt/app
 COPY --from=build /opt/app ./
 ENV PATH /opt/node_modules/.bin:$PATH
 
-RUN yarn add @strapi/plugin-graphql
-RUN yarn add @strapi/provider-email-nodemailer
+
 
 RUN chown -R node:node /opt/app
 USER node
