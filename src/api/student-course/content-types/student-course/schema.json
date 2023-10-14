@@ -27,6 +27,11 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "student_courses"
+    },
+    "quiz_progress": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::quiz-progress.quiz-progress"
     }
   }
 }

@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "izipays",
+  "info": {
+    "singularName": "izipay",
+    "pluralName": "izipays",
+    "displayName": "izipay"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "test": {
+      "type": "boolean"
+    }
+  }
+}

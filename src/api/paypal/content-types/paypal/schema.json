@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "paypals",
+  "info": {
+    "singularName": "paypal",
+    "pluralName": "paypals",
+    "displayName": "paypal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "test": {
+      "type": "boolean"
+    }
+  }
+}
