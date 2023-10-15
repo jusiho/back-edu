@@ -16,8 +16,8 @@ export default ({ env }) => ({
     config: {
       provider: "nodemailer",
       providerOptions: {
-        name: "erudev.com",
-        host: env("SMTP_HOST", "mail.erudev.com"),
+        name: env("SMTP_NAME"),
+        host: env("SMTP_HOST", "mail.flyteek.com"),
         port: env("SMTP_PORT", 465),
         auth: {
           user: env("SMTP_USERNAME"),
@@ -26,8 +26,8 @@ export default ({ env }) => ({
         // ... any custom nodemailer options
       },
       settings: {
-        defaultFrom: "team@erudev.com",
-        defaultReplyTo: "team@erudev.com",
+        defaultFrom: env("SMTP_USERNAME"),
+        defaultReplyTo: env("SMTP_USERNAME"),
       },
     },
   },
