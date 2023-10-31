@@ -907,7 +907,9 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
       'oneToMany',
       'api::sale.sale'
     >;
-    state: Attribute.Enumeration<['ONHOLD', 'PAID', 'PROCESSING', 'FAILED']>;
+    state: Attribute.Enumeration<
+      ['OUTSTANDING', 'ONHOLD', 'PAID', 'PROCESSING', 'FAILED']
+    >;
     idpayment: Attribute.String;
     method: Attribute.Enumeration<['free', 'paid']>;
     currency: Attribute.Relation<

@@ -29,6 +29,7 @@
     "state": {
       "type": "enumeration",
       "enum": [
+        "OUTSTANDING",
         "ONHOLD",
         "PAID",
         "PROCESSING",
