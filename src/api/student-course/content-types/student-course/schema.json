@@ -32,6 +32,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::quiz-progress.quiz-progress"
+    },
+    "state": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

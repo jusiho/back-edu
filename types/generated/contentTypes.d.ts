@@ -1264,6 +1264,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToOne',
       'api::quiz-progress.quiz-progress'
     >;
+    state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
