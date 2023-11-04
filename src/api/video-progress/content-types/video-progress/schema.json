@@ -24,6 +24,13 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "lasttime": {
+      "type": "integer"
+    },
+    "complete": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
