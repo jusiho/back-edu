@@ -28,7 +28,7 @@
     "lasttime": {
       "type": "integer"
     },
-    "complete": {
+    "state": {
       "type": "boolean",
       "default": false
     }

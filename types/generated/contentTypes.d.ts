@@ -1306,7 +1306,7 @@ export interface ApiVideoProgressVideoProgress extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     lasttime: Attribute.Integer;
-    complete: Attribute.Boolean & Attribute.DefaultTo<false>;
+    state: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
