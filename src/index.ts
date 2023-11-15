@@ -146,7 +146,7 @@ export default {
         nexus.objectType({
           name: "PopularityResponse", // this is our custom object type
           definition(t) {
-            t.field("course", {
+            t.field("users", {
               // and if requested, a field to query the product content type
               // type: "CourseEntityResponseCollection",
               type: "UsersPermissionsUserEntityResponseCollection",
@@ -155,6 +155,11 @@ export default {
                   "plugin::graphql.format"
                 ).returnTypes;
 
+                const start = 0;
+                const limit = parent.course.pageSize;
+
+                console.log(parent.course.id);
+
                 const studenCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
                   {
@@ -162,6 +167,21 @@ export default {
                     filters: { course: { id: { $eq: parent.course.id } } },
                   }
                 );
+
+                console.log("studenCourses", studenCourses);
+                if (studenCourses.length === 0) {
+                  const usuarios = await strapi.db
+                    .query("plugin::users-permissions.user")
+
+                    .findPage({
+                      page: parent.course.page,
+                      pageSize: parent.course.pageSize,
+                    });
+                  return toEntityResponseCollection(usuarios.results, {
+                    args: { start, limit },
+                    resourceUID: "plugin::users-permissions.user",
+                  });
+                }
 
                 // obtener id de los usurrios y guardarlos en un arreglo de todos los registros de studenCourses usando map
                 const users = studenCourses.map((user) => user.user.id);
@@ -177,8 +197,8 @@ export default {
                     pageSize: parent.course.pageSize,
                   });
 
-                const start = 0;
-                const limit = parent.course.pageSize;
+                console.log("Usuarios :", usuarios);
+
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
                 return toEntityResponseCollection(usuarios.results, {
                   args: { start, limit },
