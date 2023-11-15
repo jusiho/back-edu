@@ -154,8 +154,11 @@ export default {
                 const { toEntityResponseCollection } = strapi.service(
                   "plugin::graphql.format"
                 ).returnTypes;
-
-                const start = 0;
+                  
+                console.log(parent.course.page);
+                console.log(parent.course.pageSize);
+                
+                const start = parent.course.page - 1;
                 const limit = parent.course.pageSize;
 
                 console.log(parent.course.id);
@@ -213,6 +216,7 @@ export default {
                 });
               },
             });
+            
           },
         }),
       ],
