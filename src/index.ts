@@ -155,13 +155,11 @@ export default {
                   "plugin::graphql.format"
                 ).returnTypes;
 
-                console.log("page start : ", parent.course.page);
-                console.log("page size : ", parent.course.pageSize);
-
-                const start = parent.course.page - 1;
-                const limit = parent.course.pageSize;
-
-                console.log(parent.course.id);
+                const start =
+                  (parent.course.page - 1) * parent.course.pageSize || 0;
+                const limit = parent.course.pageSize || 100;
+                console.log("start : ", start);
+                console.log("limit : ", limit);
 
                 const studenCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
@@ -196,21 +194,29 @@ export default {
                 // Convertir el conjunto a un arreglo
                 const userIds = Array.from(userIdsSet);
 
-                const usuarios = await strapi.db
-                  .query("plugin::users-permissions.user")
+                // const { results, pagination } = await strapi.db
+                //   .query("plugin::users-permissions.user")
+                //   .findPage({
+                //     where: {
+                //       id: { $notIn: userIds },
+                //     },
+                //     page: parent.course.page,
+                //     pageSize: parent.course.pageSize,
+                //   });
 
-                  .findPage({
-                    where: {
-                      id: { $notIn: userIds },
-                    },
-                    page: parent.course.page,
-                    pageSize: parent.course.pageSize,
-                  });
-
-                console.log("Usuarios  :", usuarios);
+                const asd = await strapi.entityService.findMany('plugin::users-permissions.user', {
+                  filters: {
+                    id: { $notIn: userIds },
+                  },
+                  start: start,
+                  limit: limit,
+                });
+                
+                // console.log("Usuarios  :", results);
+                // console.log("pagination  :", pagination);
 
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
-                return toEntityResponseCollection(usuarios.results, {
+                return toEntityResponseCollection(asd, {
                   args: { start, limit },
                   resourceUID: "plugin::users-permissions.user",
                 });
