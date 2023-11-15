@@ -182,9 +182,12 @@ export default {
                     resourceUID: "plugin::users-permissions.user",
                   });
                 }
+                console.log("SEGUIIIIIIIIIIIIIIIIIIIII -------------------------- ");                
 
                 // obtener id de los usurrios y guardarlos en un arreglo de todos los registros de studenCourses usando map
                 const users = studenCourses.map((user) => user.user.id);
+                console.log("arreglo users :", users);
+                
 
                 const usuarios = await strapi.db
                   .query("plugin::users-permissions.user")
@@ -197,7 +200,7 @@ export default {
                     pageSize: parent.course.pageSize,
                   });
 
-                console.log("Usuarios :", usuarios);
+                console.log("Usuarios  :", usuarios);
 
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
                 return toEntityResponseCollection(usuarios.results, {
