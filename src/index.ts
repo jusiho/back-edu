@@ -168,7 +168,6 @@ export default {
                   }
                 );
 
-                console.log("studenCourses", studenCourses);
                 if (studenCourses.length === 0) {
                   const usuarios = await strapi.db
                     .query("plugin::users-permissions.user")
@@ -182,19 +181,24 @@ export default {
                     resourceUID: "plugin::users-permissions.user",
                   });
                 }
-                console.log("SEGUIIIIIIIIIIIIIIIIIIIII -------------------------- ");                
 
-                // obtener id de los usurrios y guardarlos en un arreglo de todos los registros de studenCourses usando map
-                const users = studenCourses.map((user) => user.user.id);
-                console.log("arreglo users :", users);
-                
+                // Filtrar elementos que tienen el objeto user y obtener sus user.id
+                const userIdsSet = new Set(
+                  studenCourses
+                    .filter(
+                      (item) => item.user !== null && item.user !== undefined
+                    )
+                    .map((item) => item.user.id)
+                );
+                // Convertir el conjunto a un arreglo
+                const userIds = Array.from(userIdsSet);
 
                 const usuarios = await strapi.db
                   .query("plugin::users-permissions.user")
 
                   .findPage({
                     where: {
-                      id: { $notIn: users },
+                      id: { $notIn: userIds },
                     },
                     page: parent.course.page,
                     pageSize: parent.course.pageSize,
