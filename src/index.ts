@@ -216,12 +216,15 @@ export default {
                   }
                 );
 
-                // console.log("Usuarios  :", results);
-                // console.log("pagination  :", pagination);
-
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
                 return toEntityResponseCollection(usuarios, {
-                  args: { start, limit },
+                  args: {
+                    filters: {
+                      id: { $notIn: userIds },
+                    },
+                    start,
+                    limit,
+                  },
                   resourceUID: "plugin::users-permissions.user",
                 });
               },
