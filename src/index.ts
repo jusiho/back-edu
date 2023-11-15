@@ -136,6 +136,7 @@ export default {
                 id: nexus.stringArg(),
                 page: nexus.intArg(),
                 pageSize: nexus.intArg(),
+                search: nexus.stringArg(),
               },
               resolve: async (root, args, ctx) => ({
                 course: args,
@@ -173,13 +174,28 @@ export default {
                   const usuarios = await strapi.entityService.findMany(
                     "plugin::users-permissions.user",
                     {
+                      filters: {
+                        $or: [
+                          { names: { $contains: parent.course.search } },
+                          { lastnames: { $contains: parent.course.search } },
+                        ],
+                      },
                       start: start,
                       limit: limit,
                     }
                   );
 
                   return toEntityResponseCollection(usuarios, {
-                    args: { start, limit },
+                    args: {
+                      filters: {
+                        $or: [
+                          { names: { $contains: parent.course.search } },
+                          { lastnames: { $contains: parent.course.search } },
+                        ],
+                      },
+                      start,
+                      limit,
+                    },
                     resourceUID: "plugin::users-permissions.user",
                   });
                 }
@@ -210,17 +226,27 @@ export default {
                   {
                     filters: {
                       id: { $notIn: userIds },
+                      $or: [
+                        { names: { $contains: parent.course.search } },
+                        { lastnames: { $contains: parent.course.search } },
+                      ],
                     },
                     start: start,
                     limit: limit,
                   }
                 );
 
+                console.log("usuarios", usuarios);
+
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
                 return toEntityResponseCollection(usuarios, {
                   args: {
                     filters: {
                       id: { $notIn: userIds },
+                      $or: [
+                        { names: { $contains: parent.course.search } },
+                        { lastnames: { $contains: parent.course.search } },
+                      ],
                     },
                     start,
                     limit,
