@@ -170,14 +170,15 @@ export default {
                 );
 
                 if (studenCourses.length === 0) {
-                  const usuarios = await strapi.db
-                    .query("plugin::users-permissions.user")
+                  const usuarios = await strapi.entityService.findMany(
+                    "plugin::users-permissions.user",
+                    {
+                      start: start,
+                      limit: limit,
+                    }
+                  );
 
-                    .findPage({
-                      page: parent.course.page,
-                      pageSize: parent.course.pageSize,
-                    });
-                  return toEntityResponseCollection(usuarios.results, {
+                  return toEntityResponseCollection(usuarios, {
                     args: { start, limit },
                     resourceUID: "plugin::users-permissions.user",
                   });
@@ -204,19 +205,22 @@ export default {
                 //     pageSize: parent.course.pageSize,
                 //   });
 
-                const asd = await strapi.entityService.findMany('plugin::users-permissions.user', {
-                  filters: {
-                    id: { $notIn: userIds },
-                  },
-                  start: start,
-                  limit: limit,
-                });
-                
+                const usuarios = await strapi.entityService.findMany(
+                  "plugin::users-permissions.user",
+                  {
+                    filters: {
+                      id: { $notIn: userIds },
+                    },
+                    start: start,
+                    limit: limit,
+                  }
+                );
+
                 // console.log("Usuarios  :", results);
                 // console.log("pagination  :", pagination);
 
                 // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
-                return toEntityResponseCollection(asd, {
+                return toEntityResponseCollection(usuarios, {
                   args: { start, limit },
                   resourceUID: "plugin::users-permissions.user",
                 });
