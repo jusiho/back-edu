@@ -999,6 +999,7 @@ export interface ApiLessonLesson extends Schema.CollectionType {
     preview: Attribute.Boolean & Attribute.DefaultTo<false>;
     description: Attribute.RichText;
     mode: Attribute.Enumeration<['CONTENT', 'QUESTION']>;
+    resourses: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
