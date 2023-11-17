@@ -93,11 +93,8 @@
     "datevivo": {
       "type": "datetime"
     },
-    "students": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "courses"
+    "preview_video": {
+      "type": "string"
     }
   }
 }

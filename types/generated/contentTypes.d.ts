@@ -636,11 +636,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     image: Attribute.Media;
     description: Attribute.RichText;
     charge: Attribute.String;
-    courses: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'manyToMany',
-      'api::course.course'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -841,11 +836,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'RECORD'>;
     datevivo: Attribute.DateTime;
-    students: Attribute.Relation<
-      'api::course.course',
-      'manyToMany',
-      'plugin::users-permissions.user'
-    >;
+    preview_video: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1147,6 +1138,7 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     score: Attribute.Float;
+    state: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

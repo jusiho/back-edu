@@ -24,6 +24,11 @@
     },
     "score": {
       "type": "float"
+    },
+    "state": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }
