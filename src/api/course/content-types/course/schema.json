@@ -95,6 +95,9 @@
     },
     "preview_video": {
       "type": "string"
+    },
+    "reduced_price": {
+      "type": "decimal"
     }
   }
 }

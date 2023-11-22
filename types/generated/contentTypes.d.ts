@@ -837,6 +837,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       Attribute.DefaultTo<'RECORD'>;
     datevivo: Attribute.DateTime;
     preview_video: Attribute.String;
+    reduced_price: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
