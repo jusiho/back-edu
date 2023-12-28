@@ -856,6 +856,53 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiCertificateCertificate extends Schema.CollectionType {
+  collectionName: 'certificates';
+  info: {
+    singularName: 'certificate';
+    pluralName: 'certificates';
+    displayName: 'Certificate';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    uuid: Attribute.UID<
+      undefined,
+      undefined,
+      {
+        'uuid-format': '^[A-F0-9]{8}-(?:[A-F0-9]{4}-){3}[A-F0-9]{12}$';
+      }
+    > &
+      Attribute.CustomField<
+        'plugin::strapi-advanced-uuid.uuid',
+        {
+          'uuid-format': '^[A-F0-9]{8}-(?:[A-F0-9]{4}-){3}[A-F0-9]{12}$';
+        }
+      >;
+    student_course: Attribute.Relation<
+      'api::certificate.certificate',
+      'oneToOne',
+      'api::student-course.student-course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::certificate.certificate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::certificate.certificate',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCountryCountry extends Schema.CollectionType {
   collectionName: 'countries';
   info: {
@@ -1361,6 +1408,11 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::quiz-progress.quiz-progress'
     >;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    certificate: Attribute.Relation<
+      'api::student-course.student-course',
+      'oneToOne',
+      'api::certificate.certificate'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1440,6 +1492,7 @@ declare module '@strapi/types' {
       'plugin::i18n.locale': PluginI18NLocale;
       'api::answer.answer': ApiAnswerAnswer;
       'api::category.category': ApiCategoryCategory;
+      'api::certificate.certificate': ApiCertificateCertificate;
       'api::country.country': ApiCountryCountry;
       'api::course.course': ApiCourseCourse;
       'api::currency.currency': ApiCurrencyCurrency;

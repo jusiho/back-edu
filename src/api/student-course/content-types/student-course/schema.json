@@ -37,6 +37,12 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "certificate": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::certificate.certificate",
+      "mappedBy": "student_course"
     }
   }
 }

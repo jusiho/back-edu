@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "certificates",
+  "info": {
+    "singularName": "certificate",
+    "pluralName": "certificates",
+    "displayName": "Certificate",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uuid": {
+      "type": "customField",
+      "options": {
+        "uuid-format": "^[A-F0-9]{8}-(?:[A-F0-9]{4}-){3}[A-F0-9]{12}$"
+      },
+      "customField": "plugin::strapi-advanced-uuid.uuid"
+    },
+    "student_course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::student-course.student-course",
+      "inversedBy": "certificate"
+    }
+  }
+}
