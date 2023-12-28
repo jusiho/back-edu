@@ -4,10 +4,9 @@ export default ({ env }) => ({
   app: {
     keys: env.array('APP_KEYS'),
   },
-  // url: env('URL_NGINX', 'https://sarpit.flyteek.com'),
-  // port: env.int('PORT', 1337),
-  
-  // webhooks: {
-  //   populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
-  // },
+  url: env('URL_NGINX', 'https://sarpit.flyteek.com'),
+  port: env.int('PORT', 1337),  
+  webhooks: {
+    populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
+  },
 });
