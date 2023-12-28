@@ -106,6 +106,10 @@
     },
     "charge": {
       "type": "string"
+    },
+    "UID": {
+      "type": "uid",
+      "targetField": "username"
     }
   }
 }
