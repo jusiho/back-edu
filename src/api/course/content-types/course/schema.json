@@ -98,6 +98,12 @@
     },
     "reduced_price": {
       "type": "decimal"
+    },
+    "session": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "courses"
     }
   }
 }

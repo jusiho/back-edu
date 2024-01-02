@@ -977,6 +977,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     datevivo: Attribute.DateTime;
     preview_video: Attribute.String;
     reduced_price: Attribute.Decimal;
+    session: Attribute.Relation<
+      'api::course.course',
+      'manyToOne',
+      'api::session.session'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1375,6 +1380,42 @@ export interface ApiSeccionSeccion extends Schema.CollectionType {
   };
 }
 
+export interface ApiSessionSession extends Schema.CollectionType {
+  collectionName: 'sessions';
+  info: {
+    singularName: 'session';
+    pluralName: 'sessions';
+    displayName: 'Session';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    video_url: Attribute.String;
+    courses: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::course.course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
   collectionName: 'student_courses';
   info: {
@@ -1505,6 +1546,7 @@ declare module '@strapi/types' {
       'api::quiz-progress.quiz-progress': ApiQuizProgressQuizProgress;
       'api::sale.sale': ApiSaleSale;
       'api::seccion.seccion': ApiSeccionSeccion;
+      'api::session.session': ApiSessionSession;
       'api::student-course.student-course': ApiStudentCourseStudentCourse;
       'api::video-progress.video-progress': ApiVideoProgressVideoProgress;
     }
