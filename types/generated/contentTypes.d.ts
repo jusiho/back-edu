@@ -977,9 +977,9 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     datevivo: Attribute.DateTime;
     preview_video: Attribute.String;
     reduced_price: Attribute.Decimal;
-    session: Attribute.Relation<
+    sessions: Attribute.Relation<
       'api::course.course',
-      'manyToOne',
+      'oneToMany',
       'api::session.session'
     >;
     createdAt: Attribute.DateTime;
@@ -1393,11 +1393,12 @@ export interface ApiSessionSession extends Schema.CollectionType {
   };
   attributes: {
     video_url: Attribute.String;
-    courses: Attribute.Relation<
+    course: Attribute.Relation<
       'api::session.session',
-      'oneToMany',
+      'manyToOne',
       'api::course.course'
     >;
+    title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -99,11 +99,11 @@
     "reduced_price": {
       "type": "decimal"
     },
-    "session": {
+    "sessions": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToMany",
       "target": "api::session.session",
-      "inversedBy": "courses"
+      "mappedBy": "course"
     }
   }
 }

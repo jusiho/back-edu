@@ -15,11 +15,14 @@
     "video_url": {
       "type": "string"
     },
-    "courses": {
+    "course": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToOne",
       "target": "api::course.course",
-      "mappedBy": "session"
+      "inversedBy": "sessions"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
