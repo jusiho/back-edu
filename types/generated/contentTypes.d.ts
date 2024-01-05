@@ -1389,7 +1389,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     video_url: Attribute.String;
@@ -1401,7 +1401,6 @@ export interface ApiSessionSession extends Schema.CollectionType {
     title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::session.session',
       'oneToOne',
