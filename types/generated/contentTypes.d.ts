@@ -1399,6 +1399,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
       'api::course.course'
     >;
     title: Attribute.String;
+    resourses: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

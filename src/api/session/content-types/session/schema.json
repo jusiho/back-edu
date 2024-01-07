@@ -23,6 +23,16 @@
     },
     "title": {
       "type": "string"
+    },
+    "resourses": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }
