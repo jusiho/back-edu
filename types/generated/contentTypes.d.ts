@@ -839,6 +839,8 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     content: Attribute.RichText;
+    image: Attribute.Media;
+    slug: Attribute.UID<'api::article.article', 'title'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
