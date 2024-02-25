@@ -1434,6 +1434,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
     >;
     title: Attribute.String;
     resourses: Attribute.Media;
+    date: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
