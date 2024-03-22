@@ -265,6 +265,10 @@ export default {
       },
     }));
 
+    strapi.controllers[
+      "plugin::users-permissions.settings"
+    ].updateEmailTemplate =
+      require("./extensions/users-permissions/overrides").updateEmailTemplate;
     //   extensionService.use(({ nexus }) => ({
     //     // GraphQL SDL
     //     typeDefs: `
