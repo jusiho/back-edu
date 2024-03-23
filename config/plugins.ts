@@ -24,10 +24,10 @@ export default ({ env }) => ({
           user: env("SMTP_USERNAME"),
           pass: env("SMTP_PASSWORD"),
         },
-        // tls: {
-        //   // do not fail on invalid certs
-        //   rejectUnauthorized: true,
-        // },
+        tls: {
+          // do not fail on invalid certs
+          rejectUnauthorized: true,
+        },
         // ... any custom nodemailer options
       },
       settings: {
