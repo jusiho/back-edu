@@ -19,14 +19,14 @@ export default ({ env }) => ({
         name: env("SMTP_NAME"),
         host: env("SMTP_HOST", "mail.flyteek.com"),
         port: env("SMTP_PORT", 465),
-        secure: false,
+        secure: true,
         auth: {
           user: env("SMTP_USERNAME"),
           pass: env("SMTP_PASSWORD"),
         },
         tls: {
           // do not fail on invalid certs
-          rejectUnauthorized: false,
+          rejectUnauthorized: true,
         },
         // ... any custom nodemailer options
       },
