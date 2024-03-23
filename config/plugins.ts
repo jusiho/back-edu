@@ -16,21 +16,21 @@ export default ({ env }) => ({
     config: {
       provider: "nodemailer",
       providerOptions: {
-        name: env("SMTP_NAME"),
-        host: env("SMTP_HOST", "mail.flyteek.com"),
-        port: env("SMTP_PORT", 465),
+        name: "sarpit.flyteek.com",
+        host:"mail.flyteek.com",
+        port: 465,
         secure: true,
         auth: {
-          user: env("SMTP_USERNAME"),
-          pass: env("SMTP_PASSWORD"),
+          user: "hola@flyteek.com",
+          pass: "hola@flyteek.com",
         },
-        // rejectUnauthorized: true,
-        // requireTLS: true,
+        rejectUnauthorized: true,
+        requireTLS: true,
         // ... any custom nodemailer options
       },
       settings: {
-        defaultFrom: env("SMTP_USERNAME"),
-        defaultReplyTo: env("SMTP_USERNAME"),
+        defaultFrom: "hola@flyteek.com",
+        defaultReplyTo: "nice@flyteek.com",
       },
     },
   },
