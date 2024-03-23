@@ -22,7 +22,7 @@ export default ({ env }) => ({
         secure: true,
         auth: {
           user: "hola@flyteek.com",
-          pass: "hola@flyteek.com",
+          pass: "xvA^XB959?]Pl}B00",
         },
         rejectUnauthorized: true,
         requireTLS: true,
