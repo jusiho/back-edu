@@ -24,8 +24,8 @@ export default ({ env }) => ({
           user: "hola@flyteek.com",
           pass: "xvA^XB959?]Pl}B00",
         },
-        rejectUnauthorized: true,
-        requireTLS: true,
+        // rejectUnauthorized: true,
+        // requireTLS: true,
         // ... any custom nodemailer options
       },
       settings: {
