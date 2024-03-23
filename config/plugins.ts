@@ -24,8 +24,8 @@ export default ({ env }) => ({
           user: env("SMTP_USERNAME"),
           pass: env("SMTP_PASSWORD"),
         },
-        rejectUnauthorized: true,
-        requireTLS: true,
+        // rejectUnauthorized: true,
+        // requireTLS: true,
         // ... any custom nodemailer options
       },
       settings: {
