@@ -43,6 +43,9 @@
       "relation": "oneToOne",
       "target": "api::certificate.certificate",
       "mappedBy": "student_course"
+    },
+    "group": {
+      "type": "integer"
     }
   }
 }

@@ -104,6 +104,9 @@
       "relation": "oneToMany",
       "target": "api::session.session",
       "mappedBy": "course"
+    },
+    "group": {
+      "type": "integer"
     }
   }
 }

@@ -1036,6 +1036,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'oneToMany',
       'api::session.session'
     >;
+    group: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1510,6 +1511,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToOne',
       'api::certificate.certificate'
     >;
+    group: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
