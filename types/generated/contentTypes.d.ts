@@ -1037,6 +1037,8 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::session.session'
     >;
     group: Attribute.Integer;
+    brochure_file: Attribute.Media;
+    brochure_link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
