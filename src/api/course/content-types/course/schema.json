@@ -119,6 +119,12 @@
     },
     "brochure_link": {
       "type": "string"
+    },
+    "group_course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group-course.group-course",
+      "mappedBy": "course"
     }
   }
 }

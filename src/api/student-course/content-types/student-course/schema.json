@@ -44,8 +44,11 @@
       "target": "api::certificate.certificate",
       "mappedBy": "student_course"
     },
-    "group": {
-      "type": "integer"
+    "group_course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group-course.group-course",
+      "inversedBy": "student_course"
     }
   }
 }

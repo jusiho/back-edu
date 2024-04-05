@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "group_courses",
+  "info": {
+    "singularName": "group-course",
+    "pluralName": "group-courses",
+    "displayName": "Group_Course",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course",
+      "inversedBy": "group_course"
+    },
+    "date_course": {
+      "type": "datetime"
+    },
+    "number": {
+      "type": "string"
+    },
+    "student_course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::student-course.student-course",
+      "mappedBy": "group_course"
+    }
+  }
+}

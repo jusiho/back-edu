@@ -1039,6 +1039,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     group: Attribute.Integer;
     brochure_file: Attribute.Media;
     brochure_link: Attribute.String;
+    group_course: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'api::group-course.group-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1080,6 +1085,47 @@ export interface ApiCurrencyCurrency extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::currency.currency',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
+  collectionName: 'group_courses';
+  info: {
+    singularName: 'group-course';
+    pluralName: 'group-courses';
+    displayName: 'Group_Course';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    course: Attribute.Relation<
+      'api::group-course.group-course',
+      'oneToOne',
+      'api::course.course'
+    >;
+    date_course: Attribute.DateTime;
+    number: Attribute.String;
+    student_course: Attribute.Relation<
+      'api::group-course.group-course',
+      'oneToOne',
+      'api::student-course.student-course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::group-course.group-course',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::group-course.group-course',
       'oneToOne',
       'admin::user'
     > &
@@ -1513,7 +1559,11 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToOne',
       'api::certificate.certificate'
     >;
-    group: Attribute.Integer;
+    group_course: Attribute.Relation<
+      'api::student-course.student-course',
+      'oneToOne',
+      'api::group-course.group-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1598,6 +1648,7 @@ declare module '@strapi/types' {
       'api::country.country': ApiCountryCountry;
       'api::course.course': ApiCourseCourse;
       'api::currency.currency': ApiCurrencyCurrency;
+      'api::group-course.group-course': ApiGroupCourseGroupCourse;
       'api::invoice.invoice': ApiInvoiceInvoice;
       'api::izipay.izipay': ApiIzipayIzipay;
       'api::lesson.lesson': ApiLessonLesson;
