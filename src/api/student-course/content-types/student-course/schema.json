@@ -47,8 +47,7 @@
     "group_course": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::group-course.group-course",
-      "inversedBy": "student_course"
+      "target": "api::group-course.group-course"
     }
   }
 }

@@ -23,12 +23,6 @@
     },
     "name": {
       "type": "string"
-    },
-    "student_course": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::student-course.student-course",
-      "mappedBy": "group_course"
     }
   }
 }

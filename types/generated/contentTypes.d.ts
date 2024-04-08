@@ -1111,11 +1111,6 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
     >;
     date_course: Attribute.DateTime;
     name: Attribute.String;
-    student_course: Attribute.Relation<
-      'api::group-course.group-course',
-      'oneToOne',
-      'api::student-course.student-course'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
