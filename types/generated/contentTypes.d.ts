@@ -1504,6 +1504,11 @@ export interface ApiSessionSession extends Schema.CollectionType {
     title: Attribute.String;
     resourses: Attribute.Media;
     date: Attribute.DateTime;
+    group_course: Attribute.Relation<
+      'api::session.session',
+      'oneToOne',
+      'api::group-course.group-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
