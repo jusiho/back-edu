@@ -12,17 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "course": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::course.course",
-      "inversedBy": "group_course"
-    },
     "date_course": {
       "type": "datetime"
     },
     "name": {
       "type": "string"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::course.course",
+      "inversedBy": "group_courses"
     }
   }
 }

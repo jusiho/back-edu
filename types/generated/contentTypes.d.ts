@@ -1039,6 +1039,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     group: Attribute.Integer;
     brochure_file: Attribute.Media;
     brochure_link: Attribute.String;
+    group_courses: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::group-course.group-course'
+    >;
     group_course: Attribute.Relation<
       'api::course.course',
       'oneToOne',
@@ -1104,13 +1109,13 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    course: Attribute.Relation<
-      'api::group-course.group-course',
-      'oneToOne',
-      'api::course.course'
-    >;
     date_course: Attribute.DateTime;
     name: Attribute.String;
+    course: Attribute.Relation<
+      'api::group-course.group-course',
+      'manyToOne',
+      'api::course.course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

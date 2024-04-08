@@ -120,11 +120,16 @@
     "brochure_link": {
       "type": "string"
     },
+    "group_courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::group-course.group-course",
+      "mappedBy": "course"
+    },
     "group_course": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::group-course.group-course",
-      "mappedBy": "course"
+      "target": "api::group-course.group-course"
     }
   }
 }
