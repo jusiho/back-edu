@@ -23,6 +23,12 @@
       "relation": "manyToOne",
       "target": "api::course.course",
       "inversedBy": "group_courses"
+    },
+    "sessions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::session.session",
+      "mappedBy": "group_course"
     }
   }
 }

@@ -1116,6 +1116,11 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
       'manyToOne',
       'api::course.course'
     >;
+    sessions: Attribute.Relation<
+      'api::group-course.group-course',
+      'oneToMany',
+      'api::session.session'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1506,7 +1511,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
     date: Attribute.DateTime;
     group_course: Attribute.Relation<
       'api::session.session',
-      'oneToOne',
+      'manyToOne',
       'api::group-course.group-course'
     >;
     createdAt: Attribute.DateTime;
