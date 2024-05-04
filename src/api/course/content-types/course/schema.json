@@ -130,6 +130,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::group-course.group-course"
+    },
+    "code": {
+      "type": "uid",
+      "required": false
     }
   }
 }

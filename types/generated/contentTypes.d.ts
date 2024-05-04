@@ -1049,6 +1049,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'oneToOne',
       'api::group-course.group-course'
     >;
+    code: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
