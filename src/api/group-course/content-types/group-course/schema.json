@@ -29,6 +29,9 @@
       "relation": "oneToMany",
       "target": "api::session.session",
       "mappedBy": "group_course"
+    },
+    "code": {
+      "type": "uid"
     }
   }
 }

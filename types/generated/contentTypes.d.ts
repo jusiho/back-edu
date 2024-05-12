@@ -1122,6 +1122,7 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
       'oneToMany',
       'api::session.session'
     >;
+    code: Attribute.UID;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
