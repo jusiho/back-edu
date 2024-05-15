@@ -134,6 +134,13 @@
     "code": {
       "type": "uid",
       "required": false
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "course",
+        "protocol"
+      ]
     }
   }
 }

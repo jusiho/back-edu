@@ -53,6 +53,10 @@
     },
     "payment_method": {
       "type": "string"
+    },
+    "email_sent": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

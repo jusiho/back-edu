@@ -1050,6 +1050,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::group-course.group-course'
     >;
     code: Attribute.UID;
+    type: Attribute.Enumeration<['course', 'protocol']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1174,6 +1175,7 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
       'api::currency.currency'
     >;
     payment_method: Attribute.String;
+    email_sent: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
