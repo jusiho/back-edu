@@ -140,7 +140,8 @@ export default {
                 search: nexus.stringArg(),
               },
               resolve: async (root, args, ctx) => ({
-                course: args,
+                // Recibe argumentos y almacena en data
+                data: args,
               }),
             });
           },
@@ -158,7 +159,7 @@ export default {
                 ).returnTypes;
 
                 const start =
-                  (parent.course.page - 1) * parent.course.pageSize || 0;
+                  (parent.data.page - 1) * parent.data.pageSize || 0;
                 const limit = parent.course.pageSize || 100;
                 console.log("start : ", start);
                 console.log("limit : ", limit);
@@ -166,8 +167,8 @@ export default {
                 const studenCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
                   {
-                    populate: ["user", "course"],
-                    filters: { course: { id: { $eq: parent.course.id } } },
+                    populate: ["user", "group_course"],
+                    filters: { course: { id: { $eq: parent.data.id } } },
                   }
                 );
 
@@ -177,8 +178,8 @@ export default {
                     {
                       filters: {
                         $or: [
-                          { names: { $contains: parent.course.search } },
-                          { lastnames: { $contains: parent.course.search } },
+                          { names: { $containsi: parent.data.search } },
+                          { lastnames: { $containsi: parent.data.search } },
                         ],
                       },
                       start: start,
@@ -190,8 +191,8 @@ export default {
                     args: {
                       filters: {
                         $or: [
-                          { names: { $contains: parent.course.search } },
-                          { lastnames: { $contains: parent.course.search } },
+                          { names: { $containsi: parent.data.search } },
+                          { lastnames: { $containsi: parent.data.search } },
                         ],
                       },
                       start,
@@ -228,8 +229,8 @@ export default {
                     filters: {
                       id: { $notIn: userIds },
                       $or: [
-                        { names: { $contains: parent.course.search } },
-                        { lastnames: { $contains: parent.course.search } },
+                        { names: { $containsi: parent.course.search } },
+                        { lastnames: { $containsi: parent.course.search } },
                       ],
                     },
                     start: start,
@@ -245,8 +246,8 @@ export default {
                     filters: {
                       id: { $notIn: userIds },
                       $or: [
-                        { names: { $contains: parent.course.search } },
-                        { lastnames: { $contains: parent.course.search } },
+                        { names: { $containsi: parent.data.search } },
+                        { lastnames: { $containsi: parent.data.search } },
                       ],
                     },
                     start,
