@@ -46,8 +46,9 @@
     },
     "group_course": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::group-course.group-course"
+      "relation": "manyToOne",
+      "target": "api::group-course.group-course",
+      "inversedBy": "student_courses"
     }
   }
 }

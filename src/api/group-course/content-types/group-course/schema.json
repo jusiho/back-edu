@@ -32,6 +32,12 @@
     },
     "code": {
       "type": "uid"
+    },
+    "student_courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-course.student-course",
+      "mappedBy": "group_course"
     }
   }
 }
