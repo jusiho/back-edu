@@ -160,7 +160,7 @@ export default {
 
                 const start =
                   (parent.data.page - 1) * parent.data.pageSize || 0;
-                const limit = parent.course.pageSize || 100;
+                const limit = parent.data.pageSize || 100;
                 console.log("start : ", start);
                 console.log("limit : ", limit);
 
@@ -168,7 +168,7 @@ export default {
                   "api::student-course.student-course",
                   {
                     populate: ["user", "group_course"],
-                    filters: { course: { id: { $eq: parent.data.id } } },
+                    filters: { group_course: { id: { $eq: parent.data.id } } },
                   }
                 );
 
@@ -229,8 +229,8 @@ export default {
                     filters: {
                       id: { $notIn: userIds },
                       $or: [
-                        { names: { $containsi: parent.course.search } },
-                        { lastnames: { $containsi: parent.course.search } },
+                        { names: { $containsi: parent.data.search } },
+                        { lastnames: { $containsi: parent.data.search } },
                       ],
                     },
                     start: start,
