@@ -49,6 +49,10 @@
       "relation": "manyToOne",
       "target": "api::group-course.group-course",
       "inversedBy": "student_courses"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

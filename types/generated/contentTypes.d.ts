@@ -1583,6 +1583,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'manyToOne',
       'api::group-course.group-course'
     >;
+    active: Attribute.Boolean & Attribute.DefaultTo<true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
