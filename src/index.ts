@@ -134,10 +134,33 @@ export default {
             t.field("studentNotCourse", {
               type: "PopularityResponse",
               args: {
-                id: nexus.stringArg(),
+                id: nexus.arg({
+                  type: "ID",
+                  as: ["String", "Int"],
+                }),
                 page: nexus.intArg(),
                 pageSize: nexus.intArg(),
                 search: nexus.stringArg(),
+                isOwn: nexus.booleanArg(),
+              },
+              resolve: async (root, args, ctx) => ({
+                // Recibe argumentos y almacena en data
+                data: args,
+              }),
+            });
+
+            // Grupos curso donde no se encuentra usuario
+            t.field("groupsStudent", {
+              type: "GroupResponseType",
+              args: {
+                id: nexus.arg({
+                  type: "ID",
+                  as: ["String", "Int"],
+                }),
+                page: nexus.intArg(),
+                pageSize: nexus.intArg(),
+                search: nexus.stringArg(),
+                isOwn: nexus.booleanArg(),
               },
               resolve: async (root, args, ctx) => ({
                 // Recibe argumentos y almacena en data
@@ -164,7 +187,7 @@ export default {
                 console.log("start : ", start);
                 console.log("limit : ", limit);
 
-                const studenCourses = await strapi.entityService.findMany(
+                const studentCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
                   {
                     populate: ["user", "group_course"],
@@ -172,11 +195,12 @@ export default {
                   }
                 );
 
-                if (studenCourses.length === 0) {
+                const filterUsers = async (additionalFilters) => {
                   const usuarios = await strapi.entityService.findMany(
                     "plugin::users-permissions.user",
                     {
                       filters: {
+                        ...additionalFilters,
                         $or: [
                           { names: { $containsi: parent.data.search } },
                           { lastnames: { $containsi: parent.data.search } },
@@ -190,6 +214,7 @@ export default {
                   return toEntityResponseCollection(usuarios, {
                     args: {
                       filters: {
+                        ...additionalFilters,
                         $or: [
                           { names: { $containsi: parent.data.search } },
                           { lastnames: { $containsi: parent.data.search } },
@@ -200,61 +225,102 @@ export default {
                     },
                     resourceUID: "plugin::users-permissions.user",
                   });
+                };
+
+                if (studentCourses.length === 0) {
+                  return await filterUsers({});
                 }
 
-                // Filtrar elementos que tienen el objeto user y obtener sus user.id
                 const userIdsSet = new Set(
-                  studenCourses
+                  studentCourses
                     .filter(
                       (item) => item.user !== null && item.user !== undefined
                     )
                     .map((item) => item.user.id)
                 );
-                // Convertir el conjunto a un arreglo
+
                 const userIds = Array.from(userIdsSet);
+                return await filterUsers({ id: { $notIn: userIds } });
+              },
+            });
+          },
+        }),
+        nexus.objectType({
+          name: "GroupResponseType", // nombre del nuevo tipo
+          definition(t) {
+            t.field("groups", {
+              type: "GroupCourseEntityResponseCollection",
+              resolve: async (parent, args) => {
+                // tu lógica de resolución aquí...
+                const { toEntityResponseCollection } = strapi.service(
+                  "plugin::graphql.format"
+                ).returnTypes;
 
-                // const { results, pagination } = await strapi.db
-                //   .query("plugin::users-permissions.user")
-                //   .findPage({
-                //     where: {
-                //       id: { $notIn: userIds },
-                //     },
-                //     page: parent.course.page,
-                //     pageSize: parent.course.pageSize,
-                //   });
+                const start =
+                  (parent.data.page - 1) * parent.data.pageSize || 0;
+                const limit = parent.data.pageSize || 100;
+                console.log("start : ", start);
+                console.log("parent.data.id : ", parent.data.id);
 
-                const usuarios = await strapi.entityService.findMany(
-                  "plugin::users-permissions.user",
+                const studentCourses = await strapi.entityService.findMany(
+                  "api::student-course.student-course",
                   {
+                    populate: ["user", "group_course"],
                     filters: {
-                      id: { $notIn: userIds },
-                      $or: [
-                        { names: { $containsi: parent.data.search } },
-                        { lastnames: { $containsi: parent.data.search } },
-                      ],
+                      user: { id: { $eq: parent.data.id } },
+                      active: { $eq: true },
                     },
-                    start: start,
-                    limit: limit,
                   }
                 );
+                console.log("studentCourses : ", studentCourses);
+                
+                
+                const groupCourseIdsSet = new Set(
+                  studentCourses
+                    .filter(
+                      (item) => item.group_course !== null && item.group_course !== undefined
+                    )
+                    .map((item) => item.group_course.id)
+                );
+                
+                const groupCourseIds = Array.from(groupCourseIdsSet);
+                console.log("groupCourseIdsSet : ", groupCourseIds);
 
-                console.log("usuarios", usuarios);
+                const filterGroups = async (additionalFilters) => {
+                  const groupsCourse = await strapi.entityService.findMany(
+                    "api::group-course.group-course",
+                    {
+                      filters: {
+                        ...additionalFilters,
+                        course: { title: { $containsi: parent.data.search } },
+                      },
+                      start: start,
+                      limit: limit,
+                    }
+                  );
 
-                // where we provide the resolver as Strapi does not know about relations of our new PopularityResponse type
-                return toEntityResponseCollection(usuarios, {
-                  args: {
-                    filters: {
-                      id: { $notIn: userIds },
-                      $or: [
-                        { names: { $containsi: parent.data.search } },
-                        { lastnames: { $containsi: parent.data.search } },
-                      ],
+                  return toEntityResponseCollection(groupsCourse, {
+                    args: {
+                      filters: {
+                        ...additionalFilters,
+                        course: { title: { $containsi: parent.data.search } },
+                      },
+                      start,
+                      limit,
                     },
-                    start,
-                    limit,
-                  },
-                  resourceUID: "plugin::users-permissions.user",
-                });
+                    resourceUID: "api::group-course.group-course",
+                  });
+                };
+
+                if (parent.data.isOwn) {
+                  return await filterGroups({ id: { $in: groupCourseIds } });
+                }
+
+                if (studentCourses.length === 0) {
+                  return await filterGroups({});
+                }
+
+                return await filterGroups({ id: { $notIn: groupCourseIds } });
               },
             });
           },
@@ -262,6 +328,9 @@ export default {
       ],
       resolversConfig: {
         "Query.studentNotCourse": {
+          auth: false,
+        },
+        "Query.groupsStudent": {
           auth: false,
         },
       },
