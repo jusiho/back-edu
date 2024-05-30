@@ -271,6 +271,22 @@ export default {
                   }
                 );
 
+                const studentCoursesDesactive =
+                  await strapi.entityService.findMany(
+                    "api::student-course.student-course",
+                    {
+                      populate: ["user", "group_course"],
+                      filters: {
+                        user: { id: { $eq: parent.data.id } },
+                        $or: [
+                          { active: { $eq: null } },
+                          { active: { $eq: false } },
+                        ],
+                      },
+                    }
+                  );
+                console.log("studentCoursesDesactive", studentCoursesDesactive);
+
                 const groupCourseIdsSet = new Set(
                   studentCourses
                     .filter(
@@ -282,7 +298,9 @@ export default {
                 );
 
                 const groupCourseIds = Array.from(groupCourseIdsSet);
-                console.log("groupCourseIdsSet : ", groupCourseIds);
+                const groupCourseIdsDesactive = Array.from(
+                  studentCoursesDesactive
+                );
 
                 const filterGroups = async (additionalFilters) => {
                   const groupsCourse = await strapi.entityService.findMany(
@@ -300,6 +318,7 @@ export default {
                   const groupsWithMembership = groupsCourse.map((group) => ({
                     ...group,
                     isUserMember: groupCourseIds.includes(group.id),
+                    isActive: groupCourseIdsDesactive.includes(group.id),
                   }));
 
                   return toEntityResponseCollection(groupsWithMembership, {
@@ -315,8 +334,8 @@ export default {
                   });
                 };
 
-                if (studentCourses.length === 0) {
-                  return await filterGroups({});
+                if (parent.data.isOwn) {
+                  return await filterGroups({ id: { $in: groupCourseIds } });
                 }
 
                 return await filterGroups({});
@@ -330,7 +349,6 @@ export default {
             t.boolean("isUserMember", {
               resolve: async (parent, args, ctx) => {
                 // lógica para determinar si el usuario es miembro o no
-                console.log("parent", parent);
 
                 return parent.isUserMember;
               },
@@ -339,8 +357,7 @@ export default {
               resolve: async (parent, args, ctx) => {
                 // lógica para determinar si el usuario es miembro o no
                 console.log("parent", parent);
-
-                return parent.isUserMember;
+                return parent.isActive;
               },
             });
           },
