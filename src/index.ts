@@ -259,8 +259,6 @@ export default {
                 const start =
                   (parent.data.page - 1) * parent.data.pageSize || 0;
                 const limit = parent.data.pageSize || 100;
-                console.log("start : ", start);
-                console.log("parent.data.id : ", parent.data.id);
 
                 const studentCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
@@ -272,17 +270,17 @@ export default {
                     },
                   }
                 );
-                console.log("studentCourses : ", studentCourses);
-                
-                
+
                 const groupCourseIdsSet = new Set(
                   studentCourses
                     .filter(
-                      (item) => item.group_course !== null && item.group_course !== undefined
+                      (item) =>
+                        item.group_course !== null &&
+                        item.group_course !== undefined
                     )
                     .map((item) => item.group_course.id)
                 );
-                
+
                 const groupCourseIds = Array.from(groupCourseIdsSet);
                 console.log("groupCourseIdsSet : ", groupCourseIds);
 
@@ -299,7 +297,12 @@ export default {
                     }
                   );
 
-                  return toEntityResponseCollection(groupsCourse, {
+                  const groupsWithMembership = groupsCourse.map((group) => ({
+                    ...group,
+                    isUserMember: groupCourseIds.includes(group.id),
+                  }));
+
+                  return toEntityResponseCollection(groupsWithMembership, {
                     args: {
                       filters: {
                         ...additionalFilters,
@@ -312,20 +315,38 @@ export default {
                   });
                 };
 
-                if (parent.data.isOwn) {
-                  return await filterGroups({ id: { $in: groupCourseIds } });
-                }
-
                 if (studentCourses.length === 0) {
                   return await filterGroups({});
                 }
 
-                return await filterGroups({ id: { $notIn: groupCourseIds } });
+                return await filterGroups({});
+              },
+            });
+          },
+        }),
+        nexus.extendType({
+          type: "GroupCourse",
+          definition(t) {
+            t.boolean("isUserMember", {
+              resolve: async (parent, args, ctx) => {
+                // lógica para determinar si el usuario es miembro o no
+                console.log("parent", parent);
+
+                return parent.isUserMember;
+              },
+            });
+            t.boolean("isActive", {
+              resolve: async (parent, args, ctx) => {
+                // lógica para determinar si el usuario es miembro o no
+                console.log("parent", parent);
+
+                return parent.isUserMember;
               },
             });
           },
         }),
       ],
+
       resolversConfig: {
         "Query.studentNotCourse": {
           auth: false,
