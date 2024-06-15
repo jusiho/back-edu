@@ -259,6 +259,8 @@ export default {
                 const start =
                   (parent.data.page - 1) * parent.data.pageSize || 0;
                 const limit = parent.data.pageSize || 100;
+                console.log("start : ", start);
+                console.log("limit : ", limit);
 
                 const studentCourses = await strapi.entityService.findMany(
                   "api::student-course.student-course",
@@ -297,24 +299,27 @@ export default {
                     .map((item) => item.group_course.id)
                 );
 
-                const groupCourseIds = Array.from(groupCourseIdsSet);
+                const groupCourseIds = groupCourseIdsSet.size > 0 ? Array.from(groupCourseIdsSet) : null;
                 const groupCourseIdsDesactive = Array.from(
                   studentCoursesDesactive
                 );
 
                 const filterGroups = async (additionalFilters) => {
+                  console.log("additionalFilters", additionalFilters);
+                  
                   const groupsCourse = await strapi.entityService.findMany(
                     "api::group-course.group-course",
                     {
                       filters: {
                         ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
-                      },
-                      start: start,
-                      limit: limit,
+                      }
                     }
                   );
 
+                  console.log("groupsCourse", groupsCourse);
+                  
+                  // Se agrega la propiedad isUserMember a cada grupo
                   const groupsWithMembership = groupsCourse.map((group) => ({
                     ...group,
                     isUserMember: groupCourseIds.includes(group.id),
@@ -324,11 +329,11 @@ export default {
                   return toEntityResponseCollection(groupsWithMembership, {
                     args: {
                       filters: {
-                        ...additionalFilters,
+                       ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
                       },
-                      start,
-                      limit,
+                      start: start,
+                      limit: limit,
                     },
                     resourceUID: "api::group-course.group-course",
                   });

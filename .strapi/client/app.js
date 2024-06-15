@@ -6,7 +6,9 @@ import graphql from "@strapi/plugin-graphql/strapi-admin";
 import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import strapiAdvancedUuid from "strapi-advanced-uuid/strapi-admin";
+import comments from "strapi-plugin-comments/strapi-admin";
 import emailDesigner from "strapi-plugin-email-designer/strapi-admin";
+import excelExport from "strapi-plugin-excel-export-2024/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 renderAdmin(document.getElementById("strapi"), {
@@ -15,6 +17,8 @@ renderAdmin(document.getElementById("strapi"), {
     i18n: i18N,
     "users-permissions": usersPermissions,
     "strapi-advanced-uuid": strapiAdvancedUuid,
+    comments: comments,
     "email-designer": emailDesigner,
+    "excel-export": excelExport,
   },
 });

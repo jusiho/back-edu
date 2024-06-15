@@ -18,6 +18,7 @@ export default [
             "cdn.jsdelivr.net",
             "strapi.io",
             "s3.amazonaws.com",
+            "market-assets.strapi.io",
           ],
         },
       },
