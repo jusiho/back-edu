@@ -256,6 +256,12 @@ export default {
                   "plugin::graphql.format"
                 ).returnTypes;
 
+                const ga = await strapi.entityService.findMany(
+                  "api::group-course.group-course",
+                  {}
+                );
+                console.log("ga ------------------------>", ga);
+                
                 const start =
                   (parent.data.page - 1) * parent.data.pageSize || 0;
                 const limit = parent.data.pageSize || 100;
@@ -299,37 +305,48 @@ export default {
                     .map((item) => item.group_course.id)
                 );
 
-                const groupCourseIds = groupCourseIdsSet.size > 0 ? Array.from(groupCourseIdsSet) : null;
+                const groupCourseIds =
+                  groupCourseIdsSet.size > 0
+                    ? Array.from(groupCourseIdsSet)
+                    : null;
                 const groupCourseIdsDesactive = Array.from(
                   studentCoursesDesactive
                 );
 
                 const filterGroups = async (additionalFilters) => {
                   console.log("additionalFilters", additionalFilters);
-                  
+
                   const groupsCourse = await strapi.entityService.findMany(
                     "api::group-course.group-course",
                     {
                       filters: {
                         ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
-                      }
+                      },
                     }
                   );
 
-                  console.log("groupsCourse", groupsCourse);
-                  
+                  console.log("groupsCourse -----------> ", groupsCourse);
+                  console.log("groupCourseIds -----------> ", groupCourseIds);
+
                   // Se agrega la propiedad isUserMember a cada grupo
                   const groupsWithMembership = groupsCourse.map((group) => ({
                     ...group,
-                    isUserMember: groupCourseIds.includes(group.id),
+                    isUserMember: groupCourseIds
+                      ? groupCourseIds.includes(group.id)
+                      : false,
                     isActive: groupCourseIdsDesactive.includes(group.id),
                   }));
+
+                  console.log(
+                    "groupsWithMembership --------> ",
+                    groupsWithMembership
+                  );
 
                   return toEntityResponseCollection(groupsWithMembership, {
                     args: {
                       filters: {
-                       ...additionalFilters,
+                        ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
                       },
                       start: start,
@@ -361,7 +378,6 @@ export default {
             t.boolean("isActive", {
               resolve: async (parent, args, ctx) => {
                 // lógica para determinar si el usuario es miembro o no
-                console.log("parent", parent);
                 return parent.isActive;
               },
             });
