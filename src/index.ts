@@ -251,6 +251,8 @@ export default {
             t.field("groups", {
               type: "GroupCourseEntityResponseCollection",
               resolve: async (parent, args) => {
+                console.log("args ------------------------------------->", args);
+                
                 // tu lógica de resolución aquí...
                 const { toEntityResponseCollection } = strapi.service(
                   "plugin::graphql.format"
