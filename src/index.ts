@@ -256,12 +256,6 @@ export default {
                   "plugin::graphql.format"
                 ).returnTypes;
 
-                const ga = await strapi.entityService.findMany(
-                  "api::group-course.group-course",
-                  {}
-                );
-                console.log("ga ------------------------>", ga);
-                
                 const start =
                   (parent.data.page - 1) * parent.data.pageSize || 0;
                 const limit = parent.data.pageSize || 100;
@@ -322,7 +316,9 @@ export default {
                       filters: {
                         ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
-                      },
+                      },                      
+                      start: start,
+                      limit: limit,
                     }
                   );
 
