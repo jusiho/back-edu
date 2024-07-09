@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_student_students",
+  "info": {
+    "displayName": "Student"
+  },
+  "options": {},
+  "attributes": {
+    "about_me": {
+      "type": "string"
+    }
+  }
+}

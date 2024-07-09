@@ -196,16 +196,22 @@ export default {
                 );
 
                 const filterUsers = async (additionalFilters) => {
+                  const filters = {
+                    ...additionalFilters,
+                  };
+
+                  if (parent.data.search) {
+                    filters.$or = [
+                      { names: { $containsi: parent.data.search } },
+                      { lastnames: { $containsi: parent.data.search } },
+                      { email: { $containsi: parent.data.search } },
+                    ];
+                  }
+
                   const usuarios = await strapi.entityService.findMany(
                     "plugin::users-permissions.user",
                     {
-                      filters: {
-                        ...additionalFilters,
-                        $or: [
-                          { names: { $containsi: parent.data.search } },
-                          { lastnames: { $containsi: parent.data.search } },
-                        ],
-                      },
+                      filters: filters,
                       start: start,
                       limit: limit,
                     }
@@ -213,13 +219,7 @@ export default {
 
                   return toEntityResponseCollection(usuarios, {
                     args: {
-                      filters: {
-                        ...additionalFilters,
-                        $or: [
-                          { names: { $containsi: parent.data.search } },
-                          { lastnames: { $containsi: parent.data.search } },
-                        ],
-                      },
+                      filters: filters,
                       start,
                       limit,
                     },
@@ -251,8 +251,11 @@ export default {
             t.field("groups", {
               type: "GroupCourseEntityResponseCollection",
               resolve: async (parent, args) => {
-                console.log("args ------------------------------------->", args);
-                
+                console.log(
+                  "args ------------------------------------->",
+                  args
+                );
+
                 // tu lógica de resolución aquí...
                 const { toEntityResponseCollection } = strapi.service(
                   "plugin::graphql.format"
@@ -318,7 +321,7 @@ export default {
                       filters: {
                         ...additionalFilters,
                         course: { title: { $containsi: parent.data.search } },
-                      },                      
+                      },
                       start: start,
                       limit: limit,
                     }

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_instructor_instructors",
+  "info": {
+    "displayName": "Instructor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "specialization": {
+      "type": "string"
+    },
+    "biography": {
+      "type": "text"
+    }
+  }
+}

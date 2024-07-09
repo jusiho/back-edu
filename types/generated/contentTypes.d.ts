@@ -745,6 +745,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     description: Attribute.RichText;
     charge: Attribute.String;
     UID: Attribute.UID<'plugin::users-permissions.user', 'username'>;
+    intructor_info: Attribute.Component<'instructor.instructor'>;
+    student_info: Attribute.Component<'student.student'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

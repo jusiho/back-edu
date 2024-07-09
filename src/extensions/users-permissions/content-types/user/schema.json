@@ -110,6 +110,16 @@
     "UID": {
       "type": "uid",
       "targetField": "username"
+    },
+    "intructor_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "instructor.instructor"
+    },
+    "student_info": {
+      "type": "component",
+      "repeatable": false,
+      "component": "student.student"
     }
   }
 }
