@@ -20,17 +20,18 @@
     "videotime": {
       "type": "integer"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "lasttime": {
       "type": "integer"
     },
     "state": {
       "type": "boolean",
       "default": false
+    },
+    "student_course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student-course.student-course",
+      "inversedBy": "video_progresses"
     }
   }
 }

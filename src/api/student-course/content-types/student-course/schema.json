@@ -53,6 +53,18 @@
     "active": {
       "type": "boolean",
       "default": true
+    },
+    "video_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video-progress.video-progress",
+      "mappedBy": "student_course"
+    },
+    "quiz_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quiz-progress.quiz-progress",
+      "mappedBy": "student_course"
     }
   }
 }

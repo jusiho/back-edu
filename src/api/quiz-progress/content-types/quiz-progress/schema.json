@@ -17,11 +17,6 @@
       "relation": "oneToOne",
       "target": "api::quiz.quiz"
     },
-    "users_permissions_user": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
-    },
     "score": {
       "type": "float"
     },
@@ -29,6 +24,12 @@
       "type": "boolean",
       "default": false,
       "required": false
+    },
+    "student_course": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student-course.student-course",
+      "inversedBy": "quiz_progresses"
     }
   }
 }

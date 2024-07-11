@@ -1560,13 +1560,13 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
       'oneToOne',
       'api::quiz.quiz'
     >;
-    users_permissions_user: Attribute.Relation<
-      'api::quiz-progress.quiz-progress',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     score: Attribute.Float;
     state: Attribute.Boolean & Attribute.DefaultTo<false>;
+    student_course: Attribute.Relation<
+      'api::quiz-progress.quiz-progress',
+      'manyToOne',
+      'api::student-course.student-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1750,6 +1750,16 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::group-course.group-course'
     >;
     active: Attribute.Boolean & Attribute.DefaultTo<true>;
+    video_progresses: Attribute.Relation<
+      'api::student-course.student-course',
+      'oneToMany',
+      'api::video-progress.video-progress'
+    >;
+    quiz_progresses: Attribute.Relation<
+      'api::student-course.student-course',
+      'oneToMany',
+      'api::quiz-progress.quiz-progress'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1785,13 +1795,13 @@ export interface ApiVideoProgressVideoProgress extends Schema.CollectionType {
       'api::lesson.lesson'
     >;
     videotime: Attribute.Integer;
-    users_permissions_user: Attribute.Relation<
-      'api::video-progress.video-progress',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
     lasttime: Attribute.Integer;
     state: Attribute.Boolean & Attribute.DefaultTo<false>;
+    student_course: Attribute.Relation<
+      'api::video-progress.video-progress',
+      'manyToOne',
+      'api::student-course.student-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
