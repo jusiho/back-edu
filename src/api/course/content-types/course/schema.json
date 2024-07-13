@@ -141,6 +141,15 @@
         "course",
         "protocol"
       ]
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "course"
     }
   }
 }

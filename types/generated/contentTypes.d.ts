@@ -1217,6 +1217,12 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     >;
     code: Attribute.UID;
     type: Attribute.Enumeration<['course', 'protocol']>;
+    rating: Attribute.Decimal;
+    ratings: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'api::rating.rating'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1584,6 +1590,47 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
   };
 }
 
+export interface ApiRatingRating extends Schema.CollectionType {
+  collectionName: 'ratings';
+  info: {
+    singularName: 'rating';
+    pluralName: 'ratings';
+    displayName: 'Rating';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    rating: Attribute.Decimal;
+    course: Attribute.Relation<
+      'api::rating.rating',
+      'manyToOne',
+      'api::course.course'
+    >;
+    user: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSaleSale extends Schema.CollectionType {
   collectionName: 'sales';
   info: {
@@ -1855,6 +1902,7 @@ declare module '@strapi/types' {
       'api::question.question': ApiQuestionQuestion;
       'api::quiz.quiz': ApiQuizQuiz;
       'api::quiz-progress.quiz-progress': ApiQuizProgressQuizProgress;
+      'api::rating.rating': ApiRatingRating;
       'api::sale.sale': ApiSaleSale;
       'api::seccion.seccion': ApiSeccionSeccion;
       'api::session.session': ApiSessionSession;
