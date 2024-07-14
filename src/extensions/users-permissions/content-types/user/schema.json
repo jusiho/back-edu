@@ -60,7 +60,7 @@
     },
     "role": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false

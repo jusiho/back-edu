@@ -835,7 +835,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     blocked: Attribute.Boolean & Attribute.DefaultTo<false>;
     role: Attribute.Relation<
       'plugin::users-permissions.user',
-      'manyToOne',
+      'manyToMany',
       'plugin::users-permissions.role'
     >;
     names: Attribute.String;
