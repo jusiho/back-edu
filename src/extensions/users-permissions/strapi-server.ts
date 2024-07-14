@@ -52,8 +52,8 @@ const issueRefreshToken = (payload, jwtOptions = {}) => {
   _.defaults(jwtOptions, strapi.config.get("plugin.users-permissions.jwt"));
   return jwt.sign(
     _.clone(payload.toJSON ? payload.toJSON() : payload),
-    process.env.REFRESH_SECRET
-    // { expiresIn: process.env.REFRESH_TOKEN_EXPIRES }
+    process.env.REFRESH_SECRET,
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRES }
   );
 };
 
@@ -205,7 +205,10 @@ export default (plugin) => {
       //     overwrite: true,
       // });
       ctx.send({
-        jwt: issueJWT({ id: obj.id }, { expiresIn: "10d" }),
+        jwt: issueJWT(
+          { id: obj.id },
+          { expiresIn: process.env.JWT_SECRET_EXPIRES }
+        ),
         refreshToken: refreshToken,
       });
     } catch (err) {
