@@ -58,11 +58,13 @@ services:
       - "82:80"
     depends_on:
       - postgres
+    networks:
+      - strapi
       
 volumes:
   strapi-data:
 
 networks:
   strapi:
-    name: Strapi
+    name: strapi
     driver: bridge
