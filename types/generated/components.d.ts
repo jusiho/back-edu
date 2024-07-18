@@ -1,5 +1,13 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface InstructorAnother extends Schema.Component {
+  collectionName: 'components_instructor_anothers';
+  info: {
+    displayName: 'another';
+  };
+  attributes: {};
+}
+
 export interface InstructorInstructor extends Schema.Component {
   collectionName: 'components_instructor_instructors';
   info: {
@@ -25,6 +33,7 @@ export interface StudentStudent extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'instructor.another': InstructorAnother;
       'instructor.instructor': InstructorInstructor;
       'student.student': StudentStudent;
     }

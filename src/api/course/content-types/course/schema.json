@@ -150,6 +150,16 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "course"
+    },
+    "finished": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "more_instructors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

@@ -835,7 +835,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     blocked: Attribute.Boolean & Attribute.DefaultTo<false>;
     role: Attribute.Relation<
       'plugin::users-permissions.user',
-      'manyToMany',
+      'manyToOne',
       'plugin::users-permissions.role'
     >;
     names: Attribute.String;
@@ -1222,6 +1222,12 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::course.course',
       'oneToMany',
       'api::rating.rating'
+    >;
+    finished: Attribute.Boolean & Attribute.DefaultTo<false>;
+    more_instructors: Attribute.Relation<
+      'api::course.course',
+      'oneToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
