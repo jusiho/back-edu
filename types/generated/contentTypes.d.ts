@@ -1764,6 +1764,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
       'manyToOne',
       'api::group-course.group-course'
     >;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1834,6 +1835,11 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::student-course.student-course',
       'oneToMany',
       'api::quiz-progress.quiz-progress'
+    >;
+    create_user: Attribute.Relation<
+      'api::student-course.student-course',
+      'oneToOne',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

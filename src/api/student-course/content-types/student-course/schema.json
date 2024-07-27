@@ -65,6 +65,11 @@
       "relation": "oneToMany",
       "target": "api::quiz-progress.quiz-progress",
       "mappedBy": "student_course"
+    },
+    "create_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
