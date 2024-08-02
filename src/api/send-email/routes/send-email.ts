@@ -9,5 +9,14 @@ export default {
        middlewares: [],
      },
     },
+    {
+      method: 'POST',
+      path: '/send-general-email',
+      handler: 'send-email.sendGeneralEmail',
+      config: {
+        policies: [],
+        middlewares: [],
+      },
+     },
   ],
 };

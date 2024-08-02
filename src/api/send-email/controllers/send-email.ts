@@ -61,4 +61,41 @@ export default {
       ctx.body = err;
     }
   },
+  sendGeneralEmail: async (ctx, next) => {
+    try {
+      const { email, subject, variables, templateReferenceId } =
+        ctx.request.body;
+
+      await strapi.plugin("email-designer").service("email").sendTemplatedEmail(
+        {
+          // required
+          to: email,
+
+          // optional if /config/plugins.js -> email.settings.defaultFrom is set
+          from: process.env.SMTP_USERNAME,
+
+          // optional if /config/plugins.js -> email.settings.defaultReplyTo is set
+          replyTo: "no-reply@flyteek.com",
+
+          // optional array of files
+          // attachments: [],
+        },
+        {
+          // required - Ref ID defined in the template designer (won't change on import)
+          templateReferenceId,
+
+          // If provided here will override the template's subject.
+          // Can include variables like `Thank you for your order {{= USER.firstName }}!`
+          subject,
+        },
+        variables
+      );
+      // Use the data variable to access the data from the POST request
+      ctx.body = { status: "ok" };
+      await next();
+    } catch (err) {
+      console.log("Error", err);
+      ctx.throw(500, "Internal Server Error");
+    }
+  },
 };
