@@ -24,7 +24,7 @@ services:
       - ./package.json:/opt/package.json
       - ./yarn.lock:/opt/yarn.lock
       - ./.env:/opt/app/.env
-      - ./providers/strapi-provider-upload-bunnynet:/opt/app/providers/strapi-provider-upload-bunnynet
+      - ./providers:/opt/app/providers
       - ./public/uploads:/opt/app/public/uploads
     ports:
       - '1337:1337'
