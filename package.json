@@ -26,7 +26,6 @@
     "strapi-plugin-comments": "^2.3.0",
     "strapi-plugin-email-designer": "^2.2.1",
     "strapi-plugin-excel-export-2024": "^1.0.7",
-    "strapi-provider-upload-bunnynet": "file:providers/strapi-provider-upload-bunnynet",
     "styled-components": "^5.2.1"
   },
   "author": {
