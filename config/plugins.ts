@@ -126,18 +126,28 @@ export default ({ env }) => ({
       },
     },
   },
+  // upload: {
+  //   config: {
+  //     provider: "@nexide/strapi-provider-bunny",
+  //     providerOptions: {
+  //       // api_key: env("BUNNY_API_KEY"),
+  //       // storage_zone: env("BUNNY_STORAGE_ZONE"),
+  //       // pull_zone: env("BUNNY_PULL_ZONE"),
+  //       api_key: env('BUNNY_API_KEY'),
+  //       storage_zone: env('BUNNY_STORAGE_ZONE'),
+  //       pull_zone: env('BUNNY_PULL_ZONE'),
+  //       hostname: env('BUNNY_HOSTNAME'),
+  //     },
+  //   },
+  // },
   upload: {
     config: {
-      provider: "@nexide/strapi-provider-bunny",
+      provider: "strapi-provider-upload-bunnynet",
       providerOptions: {
-        // api_key: env("BUNNY_API_KEY"),
-        // storage_zone: env("BUNNY_STORAGE_ZONE"),
-        // pull_zone: env("BUNNY_PULL_ZONE"),
-        // storage_endpoint: env("BUNNY_STORAGE_ENDPOINT"),
-        api_key: env('BUNNY_API_KEY'),
-        storage_zone: env('BUNNY_STORAGE_ZONE'),
-        pull_zone: env('BUNNY_PULL_ZONE'),
-        hostname: env('BUNNY_HOSTNAME'),
+        api_key: env("BUNNY_API_KEY"),
+        storage_zone: env("BUNNY_STORAGE_ZONE"),
+        pull_zone: env("BUNNY_PULL_ZONE"),
+        storage_endpoint: env("BUNNY_HOSTNAME")
       },
     },
   },

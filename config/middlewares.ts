@@ -37,7 +37,7 @@ export default [
   {
     name: "strapi::cors",
     config: {
-      origin: ["sarpit.ingetechx.com", "ingetechx.com"],
+      origin: ["ingetechx.com","flyteek.com","flyteek.com"],
       methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"],
       headers: ["Content-Type", "Authorization", "Origin", "Accept"],
       keepHeaderOnError: true,
