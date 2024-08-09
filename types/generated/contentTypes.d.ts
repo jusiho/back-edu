@@ -1682,6 +1682,11 @@ export interface ApiSaleSale extends Schema.CollectionType {
       'api::invoice.invoice'
     >;
     price: Attribute.Decimal;
+    group_course: Attribute.Relation<
+      'api::sale.sale',
+      'oneToOne',
+      'api::group-course.group-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::sale.sale', 'oneToOne', 'admin::user'> &
