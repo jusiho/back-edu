@@ -160,6 +160,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "plugin::users-permissions.user"
+    },
+    "is_final_project": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

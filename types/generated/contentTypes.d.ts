@@ -1229,6 +1229,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'oneToMany',
       'plugin::users-permissions.user'
     >;
+    is_final_project: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1846,6 +1847,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    final_project: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
