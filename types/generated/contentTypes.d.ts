@@ -850,7 +850,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     lastnames: Attribute.String;
-    phone: Attribute.Integer;
+    phone: Attribute.BigInteger;
     country: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',

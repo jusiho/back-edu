@@ -83,7 +83,8 @@
       "type": "string"
     },
     "phone": {
-      "type": "integer"
+      "type": "biginteger",
+      "unique": false
     },
     "country": {
       "type": "relation",

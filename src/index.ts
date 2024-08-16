@@ -16,7 +16,6 @@ export default {
             // here define fields you need
             t.string("names");
             t.string("lastnames");
-            t.string("UID");
             t.field("role", {
               type: "String",
               resolve: async (root, args) => {
