@@ -42,6 +42,14 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::category.category"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "percentage",
+        "cart",
+        "product"
+      ]
     }
   }
 }

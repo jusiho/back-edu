@@ -1182,6 +1182,7 @@ export interface ApiCouponCoupon extends Schema.CollectionType {
       'oneToMany',
       'api::category.category'
     >;
+    type: Attribute.Enumeration<['percentage', 'cart', 'product']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
