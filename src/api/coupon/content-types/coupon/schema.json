@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupons",
+  "info": {
+    "singularName": "coupon",
+    "pluralName": "coupons",
+    "displayName": "Coupon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "uid"
+    },
+    "description": {
+      "type": "string"
+    },
+    "date_exp": {
+      "type": "date"
+    },
+    "minimum_expense": {
+      "type": "decimal"
+    },
+    "maximum_expense": {
+      "type": "decimal"
+    },
+    "qty_max": {
+      "type": "integer"
+    },
+    "qty_max_user": {
+      "type": "integer"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    }
+  }
+}

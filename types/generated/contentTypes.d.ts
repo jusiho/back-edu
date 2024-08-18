@@ -850,7 +850,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     lastnames: Attribute.String;
-    phone: Attribute.BigInteger;
     country: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
@@ -862,6 +861,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     UID: Attribute.UID<'plugin::users-permissions.user', 'username'>;
     intructor_info: Attribute.Component<'instructor.instructor'>;
     student_info: Attribute.Component<'student.student'>;
+    phone: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1146,6 +1146,53 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::country.country',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCouponCoupon extends Schema.CollectionType {
+  collectionName: 'coupons';
+  info: {
+    singularName: 'coupon';
+    pluralName: 'coupons';
+    displayName: 'Coupon';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Attribute.UID;
+    description: Attribute.String;
+    date_exp: Attribute.Date;
+    minimum_expense: Attribute.Decimal;
+    maximum_expense: Attribute.Decimal;
+    qty_max: Attribute.Integer;
+    qty_max_user: Attribute.Integer;
+    products: Attribute.Relation<
+      'api::coupon.coupon',
+      'oneToMany',
+      'api::course.course'
+    >;
+    categories: Attribute.Relation<
+      'api::coupon.coupon',
+      'oneToMany',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::coupon.coupon',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::coupon.coupon',
       'oneToOne',
       'admin::user'
     > &
@@ -1933,6 +1980,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::certificate.certificate': ApiCertificateCertificate;
       'api::country.country': ApiCountryCountry;
+      'api::coupon.coupon': ApiCouponCoupon;
       'api::course.course': ApiCourseCourse;
       'api::currency.currency': ApiCurrencyCurrency;
       'api::group-course.group-course': ApiGroupCourseGroupCourse;
