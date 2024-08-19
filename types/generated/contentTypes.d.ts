@@ -1162,7 +1162,7 @@ export interface ApiCouponCoupon extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     code: Attribute.UID;
@@ -1185,7 +1185,6 @@ export interface ApiCouponCoupon extends Schema.CollectionType {
     type: Attribute.Enumeration<['percentage', 'cart', 'product']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::coupon.coupon',
       'oneToOne',
@@ -1836,6 +1835,36 @@ export interface ApiSessionSession extends Schema.CollectionType {
   };
 }
 
+export interface ApiSettingSetting extends Schema.SingleType {
+  collectionName: 'settings';
+  info: {
+    singularName: 'setting';
+    pluralName: 'settings';
+    displayName: 'setting';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    clean_local: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
   collectionName: 'student_courses';
   info: {
@@ -1997,6 +2026,7 @@ declare module '@strapi/types' {
       'api::sale.sale': ApiSaleSale;
       'api::seccion.seccion': ApiSeccionSeccion;
       'api::session.session': ApiSessionSession;
+      'api::setting.setting': ApiSettingSetting;
       'api::student-course.student-course': ApiStudentCourseStudentCourse;
       'api::video-progress.video-progress': ApiVideoProgressVideoProgress;
     }
