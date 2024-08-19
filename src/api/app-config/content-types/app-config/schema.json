@@ -1,18 +1,17 @@
 {
   "kind": "singleType",
-  "collectionName": "settings",
+  "collectionName": "app_configs",
   "info": {
-    "singularName": "setting",
-    "pluralName": "settings",
-    "displayName": "setting",
-    "description": ""
+    "singularName": "app-config",
+    "pluralName": "app-configs",
+    "displayName": "app_config"
   },
   "options": {
     "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "clean_local": {
+    "clean_localstorage": {
       "type": "boolean"
     }
   }

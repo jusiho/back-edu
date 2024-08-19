@@ -1011,6 +1011,35 @@ export interface ApiAnswerAnswer extends Schema.CollectionType {
   };
 }
 
+export interface ApiAppConfigAppConfig extends Schema.SingleType {
+  collectionName: 'app_configs';
+  info: {
+    singularName: 'app-config';
+    pluralName: 'app-configs';
+    displayName: 'app_config';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    clean_localstorage: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::app-config.app-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::app-config.app-config',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -1841,15 +1870,15 @@ export interface ApiSettingSetting extends Schema.SingleType {
     singularName: 'setting';
     pluralName: 'settings';
     displayName: 'setting';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     clean_local: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::setting.setting',
       'oneToOne',
@@ -2006,6 +2035,7 @@ declare module '@strapi/types' {
       'plugin::email-designer.email-template': PluginEmailDesignerEmailTemplate;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::answer.answer': ApiAnswerAnswer;
+      'api::app-config.app-config': ApiAppConfigAppConfig;
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
       'api::certificate.certificate': ApiCertificateCertificate;
