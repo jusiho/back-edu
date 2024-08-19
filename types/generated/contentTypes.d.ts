@@ -1212,6 +1212,7 @@ export interface ApiCouponCoupon extends Schema.CollectionType {
       'api::category.category'
     >;
     type: Attribute.Enumeration<['percentage', 'cart', 'product']>;
+    discount: Attribute.Decimal & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

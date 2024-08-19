@@ -50,6 +50,10 @@
         "cart",
         "product"
       ]
+    },
+    "discount": {
+      "type": "decimal",
+      "required": true
     }
   }
 }
