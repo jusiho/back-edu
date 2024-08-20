@@ -1437,6 +1437,7 @@ export interface ApiInvoiceInvoice extends Schema.CollectionType {
     >;
     payment_method: Attribute.String;
     email_sent: Attribute.Boolean & Attribute.DefaultTo<false>;
+    discount: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

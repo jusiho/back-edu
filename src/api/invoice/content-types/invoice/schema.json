@@ -57,6 +57,9 @@
     "email_sent": {
       "type": "boolean",
       "default": false
+    },
+    "discount": {
+      "type": "decimal"
     }
   }
 }
