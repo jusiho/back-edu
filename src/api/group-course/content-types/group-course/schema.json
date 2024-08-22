@@ -38,6 +38,9 @@
       "relation": "oneToMany",
       "target": "api::student-course.student-course",
       "mappedBy": "group_course"
+    },
+    "finish_date": {
+      "type": "date"
     }
   }
 }

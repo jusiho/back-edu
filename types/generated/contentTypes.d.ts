@@ -1387,6 +1387,7 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
       'oneToMany',
       'api::student-course.student-course'
     >;
+    finish_date: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
