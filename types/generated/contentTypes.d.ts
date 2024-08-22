@@ -1308,6 +1308,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     is_final_project: Attribute.Boolean & Attribute.DefaultTo<false>;
+    finish_date: Attribute.Date;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

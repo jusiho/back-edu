@@ -164,6 +164,9 @@
     "is_final_project": {
       "type": "boolean",
       "default": false
+    },
+    "finish_date": {
+      "type": "date"
     }
   }
 }
