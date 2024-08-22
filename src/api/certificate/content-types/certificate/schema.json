@@ -24,6 +24,13 @@
       "relation": "oneToOne",
       "target": "api::student-course.student-course",
       "inversedBy": "certificate"
+    },
+    "certificate_pdf": {
+      "allowedTypes": [
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
     }
   }
 }

@@ -72,14 +72,18 @@
       "target": "plugin::users-permissions.user"
     },
     "final_project": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "final_grade": {
+      "type": "decimal"
     }
   }
 }

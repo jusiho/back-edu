@@ -1135,6 +1135,7 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
       'oneToOne',
       'api::student-course.student-course'
     >;
+    certificate_pdf: Attribute.Media<'files', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1956,6 +1957,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     final_project: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    final_grade: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
