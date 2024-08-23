@@ -1136,6 +1136,7 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     certificate_pdf: Attribute.Media<'files'>;
+    certificate_image: Attribute.Media<'images'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

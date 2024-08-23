@@ -32,6 +32,13 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "certificate_image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
