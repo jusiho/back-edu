@@ -1389,6 +1389,11 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     finish_date: Attribute.Date;
+    quizzes: Attribute.Relation<
+      'api::group-course.group-course',
+      'oneToMany',
+      'api::quiz.quiz'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1651,6 +1656,11 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'api::question.question'
     >;
     description: Attribute.RichText;
+    group_course: Attribute.Relation<
+      'api::quiz.quiz',
+      'manyToOne',
+      'api::group-course.group-course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &

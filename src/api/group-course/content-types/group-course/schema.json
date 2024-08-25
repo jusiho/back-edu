@@ -41,6 +41,12 @@
     },
     "finish_date": {
       "type": "date"
+    },
+    "quizzes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::quiz.quiz",
+      "mappedBy": "group_course"
     }
   }
 }
