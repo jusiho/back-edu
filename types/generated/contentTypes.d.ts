@@ -1863,6 +1863,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
       'api::group-course.group-course'
     >;
     description: Attribute.Text;
+    order: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
