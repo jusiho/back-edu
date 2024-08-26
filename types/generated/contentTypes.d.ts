@@ -1970,7 +1970,10 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    final_project: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    final_project: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     final_grade: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
