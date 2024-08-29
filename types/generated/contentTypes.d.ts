@@ -1310,6 +1310,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     >;
     is_final_project: Attribute.Boolean & Attribute.DefaultTo<false>;
     finish_date: Attribute.Date;
+    auto_certificate: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1894,6 +1895,8 @@ export interface ApiSettingSetting extends Schema.SingleType {
   };
   attributes: {
     clean_local: Attribute.Boolean;
+    certificate_image: Attribute.Media<'images', true>;
+    logo_main: Attribute.Media<'images', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

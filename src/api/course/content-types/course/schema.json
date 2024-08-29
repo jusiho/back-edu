@@ -167,6 +167,10 @@
     },
     "finish_date": {
       "type": "date"
+    },
+    "auto_certificate": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
