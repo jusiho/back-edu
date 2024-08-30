@@ -61,6 +61,9 @@
         "videos",
         "audios"
       ]
+    },
+    "provider_id": {
+      "type": "string"
     }
   }
 }

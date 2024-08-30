@@ -1520,6 +1520,7 @@ export interface ApiLessonLesson extends Schema.CollectionType {
     description: Attribute.RichText;
     mode: Attribute.Enumeration<['CONTENT', 'QUESTION']>;
     resourses: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    provider_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1865,6 +1866,7 @@ export interface ApiSessionSession extends Schema.CollectionType {
     >;
     description: Attribute.Text;
     order: Attribute.Integer;
+    provider_id: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
