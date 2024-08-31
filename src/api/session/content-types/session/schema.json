@@ -52,6 +52,16 @@
     },
     "provider_id": {
       "type": "string"
+    },
+    "video_status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "uploading",
+        "processing",
+        "ready"
+      ],
+      "default": "pending"
     }
   }
 }
