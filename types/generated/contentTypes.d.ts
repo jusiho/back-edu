@@ -1668,6 +1668,11 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
     >;
     question_type: Attribute.Enumeration<['multiple', 'project']>;
     project_files: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    session: Attribute.Relation<
+      'api::quiz.quiz',
+      'manyToOne',
+      'api::session.session'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
@@ -1878,6 +1883,11 @@ export interface ApiSessionSession extends Schema.CollectionType {
       ['pending', 'uploading', 'processing', 'ready']
     > &
       Attribute.DefaultTo<'pending'>;
+    quizzes: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::quiz.quiz'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
