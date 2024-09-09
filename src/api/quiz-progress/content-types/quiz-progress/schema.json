@@ -30,6 +30,19 @@
       "relation": "manyToOne",
       "target": "api::student-course.student-course",
       "inversedBy": "quiz_progresses"
+    },
+    "grade": {
+      "type": "decimal"
+    },
+    "project_files": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

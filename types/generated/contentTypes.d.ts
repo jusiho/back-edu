@@ -1666,6 +1666,8 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'manyToOne',
       'api::group-course.group-course'
     >;
+    question_type: Attribute.Enumeration<['multiple', 'project']>;
+    project_files: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
@@ -1699,6 +1701,8 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
       'manyToOne',
       'api::student-course.student-course'
     >;
+    grade: Attribute.Decimal;
+    project_files: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

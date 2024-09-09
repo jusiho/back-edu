@@ -38,6 +38,23 @@
       "relation": "manyToOne",
       "target": "api::group-course.group-course",
       "inversedBy": "quizzes"
+    },
+    "question_type": {
+      "type": "enumeration",
+      "enum": [
+        "multiple",
+        "project"
+      ]
+    },
+    "project_files": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
