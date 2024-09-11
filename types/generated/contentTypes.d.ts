@@ -1667,11 +1667,9 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'api::group-course.group-course'
     >;
     question_type: Attribute.Enumeration<['multiple', 'project']>;
-    project_files: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    session: Attribute.Relation<
-      'api::quiz.quiz',
-      'manyToOne',
-      'api::session.session'
+    project_files: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1707,7 +1705,10 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     grade: Attribute.Decimal;
-    project_files: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    project_files: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1883,11 +1884,6 @@ export interface ApiSessionSession extends Schema.CollectionType {
       ['pending', 'uploading', 'processing', 'ready']
     > &
       Attribute.DefaultTo<'pending'>;
-    quizzes: Attribute.Relation<
-      'api::session.session',
-      'oneToMany',
-      'api::quiz.quiz'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

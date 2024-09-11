@@ -48,7 +48,7 @@
     },
     "project_files": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images",
@@ -56,12 +56,6 @@
         "videos",
         "audios"
       ]
-    },
-    "session": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::session.session",
-      "inversedBy": "quizzes"
     }
   }
 }
