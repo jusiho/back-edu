@@ -44,6 +44,9 @@
         "videos",
         "audios"
       ]
+    },
+    "attempts": {
+      "type": "integer"
     }
   }
 }

@@ -1671,6 +1671,7 @@ export interface ApiQuizQuiz extends Schema.CollectionType {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    max_attempts: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::quiz.quiz', 'oneToOne', 'admin::user'> &
@@ -1709,6 +1710,7 @@ export interface ApiQuizProgressQuizProgress extends Schema.CollectionType {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    attempts: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

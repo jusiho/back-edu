@@ -56,6 +56,9 @@
         "videos",
         "audios"
       ]
+    },
+    "max_attempts": {
+      "type": "integer"
     }
   }
 }
