@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "complaints_books",
+  "info": {
+    "singularName": "complaints-book",
+    "pluralName": "complaints-books",
+    "displayName": "Complaints_Book"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "identityDocument": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "details": {
+      "type": "text"
+    },
+    "complaintType": {
+      "type": "enumeration",
+      "enum": [
+        "claim",
+        "complaint"
+      ]
+    },
+    "request": {
+      "type": "string"
+    }
+  }
+}

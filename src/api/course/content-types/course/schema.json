@@ -171,6 +171,12 @@
     "auto_certificate": {
       "type": "boolean",
       "default": false
+    },
+    "subscription_plans": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subscription-plan.subscription-plan",
+      "mappedBy": "courses"
     }
   }
 }

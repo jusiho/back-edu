@@ -84,6 +84,18 @@
     },
     "final_grade": {
       "type": "decimal"
+    },
+    "isSubscriptionCourse": {
+      "type": "boolean"
+    },
+    "subscriptionEndDate": {
+      "type": "date"
+    },
+    "subscription_plan": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription-plan.subscription-plan",
+      "inversedBy": "student_courses"
     }
   }
 }

@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscription_plans",
+  "info": {
+    "singularName": "subscription-plan",
+    "pluralName": "subscription-plans",
+    "displayName": "Subscription_Plan",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "durationInMonths": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "student_courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-course.student-course",
+      "mappedBy": "subscription_plan"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "subscription_plans"
+    }
+  }
+}

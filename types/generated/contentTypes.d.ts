@@ -1154,6 +1154,42 @@ export interface ApiCertificateCertificate extends Schema.CollectionType {
   };
 }
 
+export interface ApiComplaintsBookComplaintsBook extends Schema.CollectionType {
+  collectionName: 'complaints_books';
+  info: {
+    singularName: 'complaints-book';
+    pluralName: 'complaints-books';
+    displayName: 'Complaints_Book';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    fullName: Attribute.String;
+    identityDocument: Attribute.String;
+    email: Attribute.String;
+    phone: Attribute.String;
+    details: Attribute.Text;
+    complaintType: Attribute.Enumeration<['claim', 'complaint']>;
+    request: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::complaints-book.complaints-book',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::complaints-book.complaints-book',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCountryCountry extends Schema.CollectionType {
   collectionName: 'countries';
   info: {
@@ -1311,6 +1347,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     is_final_project: Attribute.Boolean & Attribute.DefaultTo<false>;
     finish_date: Attribute.Date;
     auto_certificate: Attribute.Boolean & Attribute.DefaultTo<false>;
+    subscription_plans: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::subscription-plan.subscription-plan'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1999,6 +2040,13 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       true
     >;
     final_grade: Attribute.Decimal;
+    isSubscriptionCourse: Attribute.Boolean;
+    subscriptionEndDate: Attribute.Date;
+    subscription_plan: Attribute.Relation<
+      'api::student-course.student-course',
+      'manyToOne',
+      'api::subscription-plan.subscription-plan'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2009,6 +2057,52 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::student-course.student-course',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubscriptionPlanSubscriptionPlan
+  extends Schema.CollectionType {
+  collectionName: 'subscription_plans';
+  info: {
+    singularName: 'subscription-plan';
+    pluralName: 'subscription-plans';
+    displayName: 'Subscription_Plan';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    price: Attribute.Decimal;
+    durationInMonths: Attribute.Integer;
+    description: Attribute.Text;
+    active: Attribute.Boolean;
+    student_courses: Attribute.Relation<
+      'api::subscription-plan.subscription-plan',
+      'oneToMany',
+      'api::student-course.student-course'
+    >;
+    courses: Attribute.Relation<
+      'api::subscription-plan.subscription-plan',
+      'manyToMany',
+      'api::course.course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscription-plan.subscription-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subscription-plan.subscription-plan',
       'oneToOne',
       'admin::user'
     > &
@@ -2084,6 +2178,7 @@ declare module '@strapi/types' {
       'api::article.article': ApiArticleArticle;
       'api::category.category': ApiCategoryCategory;
       'api::certificate.certificate': ApiCertificateCertificate;
+      'api::complaints-book.complaints-book': ApiComplaintsBookComplaintsBook;
       'api::country.country': ApiCountryCountry;
       'api::coupon.coupon': ApiCouponCoupon;
       'api::course.course': ApiCourseCourse;
@@ -2103,6 +2198,7 @@ declare module '@strapi/types' {
       'api::session.session': ApiSessionSession;
       'api::setting.setting': ApiSettingSetting;
       'api::student-course.student-course': ApiStudentCourseStudentCourse;
+      'api::subscription-plan.subscription-plan': ApiSubscriptionPlanSubscriptionPlan;
       'api::video-progress.video-progress': ApiVideoProgressVideoProgress;
     }
   }

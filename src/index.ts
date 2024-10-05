@@ -1,3 +1,5 @@
+import { subcriptionResolvers } from "./extensions/student-courses/subcription";
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -347,6 +349,9 @@ export default {
         }),
       ],
     }));
+
+    // Usar la lógica desde el archivo externo
+    extensionService.use(({ strapi }) => subcriptionResolvers);
 
     strapi.controllers[
       "plugin::users-permissions.settings"
