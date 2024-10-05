@@ -59,7 +59,7 @@ export default ({ env }) => ({
     enabled: true,
     config: {
       jwt: {
-        expiresIn: "60d",
+        expiresIn: "30d",
       },
     },
   },
