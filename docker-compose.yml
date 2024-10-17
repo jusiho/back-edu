@@ -50,18 +50,6 @@ services:
     networks:
       - strapi
 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "pierreblas123@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "bistionpro357"
-    ports:
-      - "82:80"
-    depends_on:
-      - postgres
-    networks:
-      - strapi
-      
 volumes:
   strapi-data:
 
