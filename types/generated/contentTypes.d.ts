@@ -1959,6 +1959,9 @@ export interface ApiSettingSetting extends Schema.SingleType {
     clean_local: Attribute.Boolean;
     certificate_image: Attribute.Media<'images', true>;
     logo_main: Attribute.Media<'images', true>;
+    time_offer_init: Attribute.DateTime;
+    time_offer_finish: Attribute.DateTime;
+    text_offer: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

@@ -24,11 +24,21 @@
       ]
     },
     "logo_main": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "time_offer_init": {
+      "type": "datetime"
+    },
+    "time_offer_finish": {
+      "type": "datetime"
+    },
+    "text_offer": {
+      "type": "string"
     }
   }
 }
