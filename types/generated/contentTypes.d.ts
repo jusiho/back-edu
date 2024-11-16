@@ -1962,6 +1962,8 @@ export interface ApiSettingSetting extends Schema.SingleType {
     time_offer_init: Attribute.DateTime;
     time_offer_finish: Attribute.DateTime;
     text_offer: Attribute.String;
+    link_offer: Attribute.String;
+    offer_active: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

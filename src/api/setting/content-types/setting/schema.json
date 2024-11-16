@@ -39,6 +39,13 @@
     },
     "text_offer": {
       "type": "string"
+    },
+    "link_offer": {
+      "type": "string"
+    },
+    "offer_active": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
