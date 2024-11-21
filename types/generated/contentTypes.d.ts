@@ -1596,7 +1596,7 @@ export interface ApiLinkResourceLinkResource extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     link: Attribute.String;
@@ -1612,7 +1612,6 @@ export interface ApiLinkResourceLinkResource extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::link-resource.link-resource',
       'oneToOne',
