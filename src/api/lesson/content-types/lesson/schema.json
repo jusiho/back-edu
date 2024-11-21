@@ -73,6 +73,12 @@
         "processing",
         "ready"
       ]
+    },
+    "link_resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::link-resource.link-resource",
+      "mappedBy": "lesson"
     }
   }
 }

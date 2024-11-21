@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "link_resources",
+  "info": {
+    "singularName": "link-resource",
+    "pluralName": "link-resources",
+    "displayName": "Link_Resource",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "link": {
+      "type": "string"
+    },
+    "lesson": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lesson.lesson",
+      "inversedBy": "link_resources"
+    },
+    "session": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::session.session",
+      "inversedBy": "link_resources"
+    }
+  }
+}

@@ -1565,6 +1565,11 @@ export interface ApiLessonLesson extends Schema.CollectionType {
     video_status: Attribute.Enumeration<
       ['pending', 'uploading', 'processing', 'ready']
     >;
+    link_resources: Attribute.Relation<
+      'api::lesson.lesson',
+      'oneToMany',
+      'api::link-resource.link-resource'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1575,6 +1580,47 @@ export interface ApiLessonLesson extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::lesson.lesson',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLinkResourceLinkResource extends Schema.CollectionType {
+  collectionName: 'link_resources';
+  info: {
+    singularName: 'link-resource';
+    pluralName: 'link-resources';
+    displayName: 'Link_Resource';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    link: Attribute.String;
+    lesson: Attribute.Relation<
+      'api::link-resource.link-resource',
+      'manyToOne',
+      'api::lesson.lesson'
+    >;
+    session: Attribute.Relation<
+      'api::link-resource.link-resource',
+      'manyToOne',
+      'api::session.session'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::link-resource.link-resource',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::link-resource.link-resource',
       'oneToOne',
       'admin::user'
     > &
@@ -1927,6 +1973,11 @@ export interface ApiSessionSession extends Schema.CollectionType {
       ['pending', 'uploading', 'processing', 'ready']
     > &
       Attribute.DefaultTo<'pending'>;
+    link_resources: Attribute.Relation<
+      'api::session.session',
+      'oneToMany',
+      'api::link-resource.link-resource'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -2192,6 +2243,7 @@ declare module '@strapi/types' {
       'api::invoice.invoice': ApiInvoiceInvoice;
       'api::izipay.izipay': ApiIzipayIzipay;
       'api::lesson.lesson': ApiLessonLesson;
+      'api::link-resource.link-resource': ApiLinkResourceLinkResource;
       'api::paypal.paypal': ApiPaypalPaypal;
       'api::post.post': ApiPostPost;
       'api::question.question': ApiQuestionQuestion;

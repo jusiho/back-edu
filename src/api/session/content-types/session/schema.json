@@ -62,6 +62,12 @@
         "ready"
       ],
       "default": "pending"
+    },
+    "link_resources": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::link-resource.link-resource",
+      "mappedBy": "session"
     }
   }
 }
