@@ -1352,6 +1352,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToMany',
       'api::subscription-plan.subscription-plan'
     >;
+    certificate_price: Attribute.Decimal;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
