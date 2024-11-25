@@ -1,4 +1,4 @@
-import type { Schema, Attribute } from '@strapi/strapi';
+import type { Attribute, Schema } from '@strapi/strapi';
 
 export interface InstructorAnother extends Schema.Component {
   collectionName: 'components_instructor_anothers';
@@ -11,12 +11,12 @@ export interface InstructorAnother extends Schema.Component {
 export interface InstructorInstructor extends Schema.Component {
   collectionName: 'components_instructor_instructors';
   info: {
-    displayName: 'Instructor';
     description: '';
+    displayName: 'Instructor';
   };
   attributes: {
-    specialization: Attribute.String;
     biography: Attribute.Text;
+    specialization: Attribute.String;
   };
 }
 
