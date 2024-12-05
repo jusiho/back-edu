@@ -1416,7 +1416,8 @@ export interface ApiFormContactFormContact extends Schema.CollectionType {
   info: {
     singularName: 'form-contact';
     pluralName: 'form-contacts';
-    displayName: 'form_contact';
+    displayName: 'Form_Contact';
+    description: '';
   };
   options: {
     draftAndPublish: false;
