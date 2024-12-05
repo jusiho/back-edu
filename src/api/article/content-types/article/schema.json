@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "content": {
-      "type": "richtext"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -32,6 +29,27 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "default"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "description": {
+      "type": "text"
+    },
+    "related_articles": {
+      "type": "dynamiczone",
+      "components": [
+        "dynamic.related-articles"
+      ]
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

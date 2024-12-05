@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_dynamic_related_articles",
+  "info": {
+    "displayName": "Related_articles",
+    "icon": "crop"
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  }
+}
