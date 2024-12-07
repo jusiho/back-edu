@@ -1429,6 +1429,7 @@ export interface ApiFormContactFormContact extends Schema.CollectionType {
     phone: Attribute.String;
     country: Attribute.String;
     education_from: Attribute.String;
+    course: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

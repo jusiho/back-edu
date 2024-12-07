@@ -29,6 +29,9 @@
     },
     "education_from": {
       "type": "string"
+    },
+    "course": {
+      "type": "string"
     }
   }
 }
