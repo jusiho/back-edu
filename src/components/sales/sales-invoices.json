@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sales_sales_invoices",
+  "info": {
+    "displayName": "sales_invoices",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "sales": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::sale.sale"
+    }
+  }
+}

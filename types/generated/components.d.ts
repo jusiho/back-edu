@@ -35,6 +35,21 @@ export interface InstructorInstructor extends Schema.Component {
   };
 }
 
+export interface SalesSalesInvoices extends Schema.Component {
+  collectionName: 'components_sales_sales_invoices';
+  info: {
+    displayName: 'sales_invoices';
+    description: '';
+  };
+  attributes: {
+    sales: Attribute.Relation<
+      'sales.sales-invoices',
+      'oneToMany',
+      'api::sale.sale'
+    >;
+  };
+}
+
 export interface SharedMetaSocial extends Schema.Component {
   collectionName: 'components_shared_meta_socials';
   info: {
@@ -102,6 +117,7 @@ declare module '@strapi/types' {
       'dynamic.related-articles': DynamicRelatedArticles;
       'instructor.another': InstructorAnother;
       'instructor.instructor': InstructorInstructor;
+      'sales.sales-invoices': SalesSalesInvoices;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
       'student.student': StudentStudent;

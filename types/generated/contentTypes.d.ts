@@ -2069,6 +2069,9 @@ export interface ApiSettingSetting extends Schema.SingleType {
     text_offer: Attribute.String;
     link_offer: Attribute.String;
     offer_active: Attribute.Boolean & Attribute.DefaultTo<false>;
+    example_certificate: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

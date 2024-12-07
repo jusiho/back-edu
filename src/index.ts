@@ -18,6 +18,7 @@ export default {
             // here define fields you need
             t.string("names");
             t.string("lastnames");
+            t.string("phone");
             t.field("role", {
               type: "String",
               resolve: async (root, args) => {
@@ -31,7 +32,6 @@ export default {
                 return userData.role.type;
               },
             });
-            t.boolean("confirmed");
             t.field("student_courses", {
               type: "String",
               resolve: async (root, args) => {
