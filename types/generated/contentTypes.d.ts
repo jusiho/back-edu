@@ -1461,6 +1461,7 @@ export interface ApiSettingSetting extends Schema.SingleType {
     example_certificate: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    fondo_main: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     image_profile: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     link_offer: Attribute.String;
     logo_main: Attribute.Media<'images', true>;
