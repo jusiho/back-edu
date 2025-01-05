@@ -482,6 +482,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
+    children_categories: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::category.category'
+    >;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::category.category',
@@ -490,6 +495,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     > &
       Attribute.Private;
     name: Attribute.String;
+    parent_category: Attribute.Relation<
+      'api::category.category',
+      'manyToOne',
+      'api::category.category'
+    >;
     slug: Attribute.UID<'api::category.category', 'name'> & Attribute.Required;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
