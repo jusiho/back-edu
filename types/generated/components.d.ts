@@ -1,5 +1,29 @@
 import type { Attribute, Schema } from '@strapi/strapi';
 
+export interface DynamicPopup extends Schema.Component {
+  collectionName: 'components_dynamic_popups';
+  info: {
+    description: '';
+    displayName: 'popup';
+    icon: 'bell';
+  };
+  attributes: {
+    buttonText: Attribute.String;
+    buttonUrl: Attribute.String;
+    description: Attribute.RichText;
+    dismissable: Attribute.Boolean;
+    endDate: Attribute.DateTime;
+    frequency: Attribute.Enumeration<
+      ['oncePerSession', 'oncePerDay', 'always']
+    >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    isActive: Attribute.Boolean;
+    openNewTab: Attribute.Boolean;
+    startDate: Attribute.DateTime;
+    title: Attribute.String;
+  };
+}
+
 export interface DynamicRelatedArticles extends Schema.Component {
   collectionName: 'components_dynamic_related_articles';
   info: {
@@ -114,6 +138,7 @@ export interface StudentStudent extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'dynamic.popup': DynamicPopup;
       'dynamic.related-articles': DynamicRelatedArticles;
       'instructor.another': InstructorAnother;
       'instructor.instructor': InstructorInstructor;

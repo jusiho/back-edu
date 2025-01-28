@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_dynamic_popups",
+  "info": {
+    "displayName": "popup",
+    "icon": "bell",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isActive": {
+      "type": "boolean"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "dismissable": {
+      "type": "boolean"
+    },
+    "buttonText": {
+      "type": "string"
+    },
+    "buttonUrl": {
+      "type": "string"
+    },
+    "openNewTab": {
+      "type": "boolean"
+    },
+    "frequency": {
+      "type": "enumeration",
+      "enum": [
+        "oncePerSession",
+        "oncePerDay",
+        "always"
+      ]
+    }
+  }
+}

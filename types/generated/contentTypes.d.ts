@@ -1071,6 +1071,36 @@ export interface ApiLinkResourceLinkResource extends Schema.CollectionType {
   };
 }
 
+export interface ApiMarketingMarketing extends Schema.SingleType {
+  collectionName: 'marketings';
+  info: {
+    displayName: 'marketing';
+    pluralName: 'marketings';
+    singularName: 'marketing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::marketing.marketing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    popups: Attribute.Component<'dynamic.popup', true>;
+    publishedAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::marketing.marketing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPaypalPaypal extends Schema.SingleType {
   collectionName: 'paypals';
   info: {
@@ -1476,6 +1506,20 @@ export interface ApiSettingSetting extends Schema.SingleType {
     link_offer: Attribute.String;
     logo_main: Attribute.Media<'images', true>;
     offer_active: Attribute.Boolean & Attribute.DefaultTo<false>;
+    privacy_policies: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
+    terms_of_service: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'default';
+        }
+      >;
     text_offer: Attribute.String;
     time_offer_finish: Attribute.DateTime;
     time_offer_init: Attribute.DateTime;
@@ -2304,6 +2348,7 @@ declare module '@strapi/types' {
       'api::izipay.izipay': ApiIzipayIzipay;
       'api::lesson.lesson': ApiLessonLesson;
       'api::link-resource.link-resource': ApiLinkResourceLinkResource;
+      'api::marketing.marketing': ApiMarketingMarketing;
       'api::paypal.paypal': ApiPaypalPaypal;
       'api::post.post': ApiPostPost;
       'api::question.question': ApiQuestionQuestion;
