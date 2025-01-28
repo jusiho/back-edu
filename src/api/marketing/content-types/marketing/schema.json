@@ -4,10 +4,11 @@
   "info": {
     "singularName": "marketing",
     "pluralName": "marketings",
-    "displayName": "marketing"
+    "displayName": "marketing",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

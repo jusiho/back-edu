@@ -1074,12 +1074,13 @@ export interface ApiLinkResourceLinkResource extends Schema.CollectionType {
 export interface ApiMarketingMarketing extends Schema.SingleType {
   collectionName: 'marketings';
   info: {
+    description: '';
     displayName: 'marketing';
     pluralName: 'marketings';
     singularName: 'marketing';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Attribute.DateTime;
@@ -1090,7 +1091,6 @@ export interface ApiMarketingMarketing extends Schema.SingleType {
     > &
       Attribute.Private;
     popups: Attribute.Component<'dynamic.popup', true>;
-    publishedAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::marketing.marketing',
