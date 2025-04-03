@@ -24,7 +24,7 @@
     "react-dom": "^18.0.0",
     "react-router-dom": "^5.2.0",
     "sharp": "^0.33.5",
-    "strapi-advanced-uuid": "^1.4.3",
+    "strapi-advanced-uuid": "^1.4.2",
     "strapi-plugin-comments": "^2.3.2",
     "strapi-plugin-email-designer": "^2.2.1",
     "strapi-provider-upload-bunnynet": "file:providers/strapi-provider-upload-bunnynet",

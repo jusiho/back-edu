@@ -10870,7 +10870,7 @@ statuses@2.0.1, statuses@^2.0.1:
   resolved "https://registry.npmjs.org/statuses/-/statuses-1.5.0.tgz"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
-strapi-advanced-uuid@^1.4.3:
+strapi-advanced-uuid@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/strapi-advanced-uuid/-/strapi-advanced-uuid-1.4.2.tgz#5f9ab780fd9a0ef215c41fa0ddc28817e049b1e6"
   integrity sha512-PT8akgl70mI/2bzrXNJn6uF05phF8Aa+/TdE1U1Tdr++1LyibwX6r+YwOWtGLaAbtSdPwbpzN7ZDH4f+8pFM0w==
