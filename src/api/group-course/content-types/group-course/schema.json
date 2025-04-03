@@ -47,6 +47,9 @@
       "relation": "oneToMany",
       "target": "api::quiz.quiz",
       "mappedBy": "group_course"
+    },
+    "cantUsers": {
+      "type": "integer"
     }
   }
 }

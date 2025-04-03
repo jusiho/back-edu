@@ -856,6 +856,7 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
+    cantUsers: Attribute.Integer;
     code: Attribute.UID;
     course: Attribute.Relation<
       'api::group-course.group-course',
