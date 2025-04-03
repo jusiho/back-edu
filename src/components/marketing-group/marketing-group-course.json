@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_marketing_group_marketing_group_courses",
+  "info": {
+    "displayName": "Marketing Group Course",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "maxUsersOffer": {
+      "type": "integer"
+    },
+    "autoCountUsers": {
+      "type": "boolean"
+    },
+    "cantUsersOffer": {
+      "type": "integer"
+    }
+  }
+}

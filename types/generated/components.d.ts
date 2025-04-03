@@ -59,6 +59,19 @@ export interface InstructorInstructor extends Schema.Component {
   };
 }
 
+export interface MarketingGroupMarketingGroupCourse extends Schema.Component {
+  collectionName: 'components_marketing_group_marketing_group_courses';
+  info: {
+    displayName: 'Marketing Group Course';
+    icon: 'chartBubble';
+  };
+  attributes: {
+    autoCountUsers: Attribute.Boolean;
+    cantUsersOffer: Attribute.Integer;
+    maxUsersOffer: Attribute.Integer;
+  };
+}
+
 export interface SalesSalesInvoices extends Schema.Component {
   collectionName: 'components_sales_sales_invoices';
   info: {
@@ -142,6 +155,7 @@ declare module '@strapi/types' {
       'dynamic.related-articles': DynamicRelatedArticles;
       'instructor.another': InstructorAnother;
       'instructor.instructor': InstructorInstructor;
+      'marketing-group.marketing-group-course': MarketingGroupMarketingGroupCourse;
       'sales.sales-invoices': SalesSalesInvoices;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;

@@ -48,8 +48,11 @@
       "target": "api::quiz.quiz",
       "mappedBy": "group_course"
     },
-    "cantUsers": {
-      "type": "integer"
+    "marketing": {
+      "displayName": "Marketing Group Course",
+      "type": "component",
+      "repeatable": false,
+      "component": "marketing-group.marketing-group-course"
     }
   }
 }

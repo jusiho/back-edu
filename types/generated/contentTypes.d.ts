@@ -856,7 +856,6 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    cantUsers: Attribute.Integer;
     code: Attribute.UID;
     course: Attribute.Relation<
       'api::group-course.group-course',
@@ -872,6 +871,7 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
       Attribute.Private;
     date_course: Attribute.DateTime;
     finish_date: Attribute.Date;
+    marketing: Attribute.Component<'marketing-group.marketing-group-course'>;
     name: Attribute.String;
     quizzes: Attribute.Relation<
       'api::group-course.group-course',
