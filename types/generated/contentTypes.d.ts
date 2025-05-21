@@ -728,6 +728,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     is_final_project: Attribute.Boolean & Attribute.DefaultTo<false>;
     isfree: Attribute.Boolean & Attribute.DefaultTo<false>;
     level: Attribute.Enumeration<['BASIC', 'MIDDLE', 'PRO']>;
+    marketing: Attribute.Component<'marketing-course.marketing'>;
     mode: Attribute.Enumeration<['VIVO', 'RECORD']> &
       Attribute.Required &
       Attribute.DefaultTo<'RECORD'>;
@@ -873,6 +874,7 @@ export interface ApiGroupCourseGroupCourse extends Schema.CollectionType {
     finish_date: Attribute.Date;
     marketing: Attribute.Component<'marketing-group.marketing-group-course'>;
     name: Attribute.String;
+    numberGroup: Attribute.Integer;
     quizzes: Attribute.Relation<
       'api::group-course.group-course',
       'oneToMany',

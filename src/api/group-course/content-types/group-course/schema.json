@@ -53,6 +53,9 @@
       "type": "component",
       "repeatable": false,
       "component": "marketing-group.marketing-group-course"
+    },
+    "numberGroup": {
+      "type": "integer"
     }
   }
 }
