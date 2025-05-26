@@ -759,6 +759,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::session.session'
     >;
     slug: Attribute.UID<'api::course.course', 'title'>;
+    speach: Attribute.Component<'speach.speach'>;
     studentsqty: Attribute.String;
     subscription_plans: Attribute.Relation<
       'api::course.course',

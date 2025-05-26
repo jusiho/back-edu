@@ -147,6 +147,31 @@ export interface SharedSeo extends Schema.Component {
   };
 }
 
+export interface SpeachSpeach extends Schema.Component {
+  collectionName: 'components_speach_speaches';
+  info: {
+    description: '';
+    displayName: 'speach';
+    icon: 'cube';
+  };
+  attributes: {
+    agent_name: Attribute.String;
+    certificate_hours: Attribute.String;
+    dates_summary: Attribute.String;
+    discount_pct: Attribute.String;
+    price_co_disc: Attribute.String;
+    price_co_orig: Attribute.String;
+    price_int_disc: Attribute.String;
+    price_int_orig: Attribute.String;
+    price_mx_disc: Attribute.String;
+    price_mx_orig: Attribute.String;
+    price_pe_disc: Attribute.String;
+    price_pe_orig: Attribute.String;
+    syllabus_url: Attribute.String;
+    time_summary: Attribute.String;
+  };
+}
+
 export interface StudentStudent extends Schema.Component {
   collectionName: 'components_student_students';
   info: {
@@ -169,6 +194,7 @@ declare module '@strapi/types' {
       'sales.sales-invoices': SalesSalesInvoices;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
+      'speach.speach': SpeachSpeach;
       'student.student': StudentStudent;
     }
   }

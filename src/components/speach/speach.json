@@ -1,0 +1,53 @@
+{
+  "collectionName": "components_speach_speaches",
+  "info": {
+    "displayName": "speach",
+    "icon": "cube",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "dates_summary": {
+      "type": "string"
+    },
+    "time_summary": {
+      "type": "string"
+    },
+    "discount_pct": {
+      "type": "string"
+    },
+    "price_pe_orig": {
+      "type": "string"
+    },
+    "price_pe_disc": {
+      "type": "string"
+    },
+    "price_int_orig": {
+      "type": "string"
+    },
+    "price_int_disc": {
+      "type": "string"
+    },
+    "syllabus_url": {
+      "type": "string"
+    },
+    "price_mx_orig": {
+      "type": "string"
+    },
+    "price_mx_disc": {
+      "type": "string"
+    },
+    "price_co_orig": {
+      "type": "string"
+    },
+    "price_co_disc": {
+      "type": "string"
+    },
+    "certificate_hours": {
+      "type": "string"
+    },
+    "agent_name": {
+      "type": "string"
+    }
+  }
+}
