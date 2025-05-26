@@ -14,40 +14,31 @@
       "type": "string"
     },
     "discount_pct": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_pe_orig": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_pe_disc": {
-      "type": "string"
-    },
-    "price_int_orig": {
-      "type": "string"
-    },
-    "price_int_disc": {
-      "type": "string"
-    },
-    "syllabus_url": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_mx_orig": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_mx_disc": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_co_orig": {
-      "type": "string"
+      "type": "decimal"
     },
     "price_co_disc": {
-      "type": "string"
+      "type": "decimal"
     },
-    "certificate_hours": {
-      "type": "string"
+    "price_int_orig": {
+      "type": "decimal"
     },
-    "agent_name": {
-      "type": "string"
+    "price_int_disc": {
+      "type": "decimal"
     }
   }
 }

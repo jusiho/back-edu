@@ -155,19 +155,16 @@ export interface SpeachSpeach extends Schema.Component {
     icon: 'cube';
   };
   attributes: {
-    agent_name: Attribute.String;
-    certificate_hours: Attribute.String;
     dates_summary: Attribute.String;
-    discount_pct: Attribute.String;
-    price_co_disc: Attribute.String;
-    price_co_orig: Attribute.String;
-    price_int_disc: Attribute.String;
-    price_int_orig: Attribute.String;
-    price_mx_disc: Attribute.String;
-    price_mx_orig: Attribute.String;
-    price_pe_disc: Attribute.String;
-    price_pe_orig: Attribute.String;
-    syllabus_url: Attribute.String;
+    discount_pct: Attribute.Decimal;
+    price_co_disc: Attribute.Decimal;
+    price_co_orig: Attribute.Decimal;
+    price_int_disc: Attribute.Decimal;
+    price_int_orig: Attribute.Decimal;
+    price_mx_disc: Attribute.Decimal;
+    price_mx_orig: Attribute.Decimal;
+    price_pe_disc: Attribute.Decimal;
+    price_pe_orig: Attribute.Decimal;
     time_summary: Attribute.String;
   };
 }
