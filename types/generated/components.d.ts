@@ -157,6 +157,7 @@ export interface SpeachSpeach extends Schema.Component {
   attributes: {
     dates_summary: Attribute.String;
     discount_pct: Attribute.Decimal;
+    kommoTag: Attribute.Integer;
     price_co_disc: Attribute.Decimal;
     price_co_orig: Attribute.Decimal;
     price_int_disc: Attribute.Decimal;

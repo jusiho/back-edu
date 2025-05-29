@@ -39,6 +39,9 @@
     },
     "price_int_disc": {
       "type": "decimal"
+    },
+    "kommoTag": {
+      "type": "integer"
     }
   }
 }
