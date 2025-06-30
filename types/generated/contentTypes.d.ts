@@ -1509,6 +1509,7 @@ export interface ApiSettingSetting extends Schema.SingleType {
     image_profile: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     link_offer: Attribute.String;
     logo_main: Attribute.Media<'images', true>;
+    odooConfig: Attribute.JSON;
     offer_active: Attribute.Boolean & Attribute.DefaultTo<false>;
     privacy_policies: Attribute.RichText &
       Attribute.CustomField<
