@@ -96,6 +96,10 @@
       "relation": "manyToOne",
       "target": "api::subscription-plan.subscription-plan",
       "inversedBy": "student_courses"
+    },
+    "is_instructor_view": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

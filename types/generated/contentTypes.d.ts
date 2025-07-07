@@ -1583,6 +1583,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'manyToOne',
       'api::group-course.group-course'
     >;
+    is_instructor_view: Attribute.Boolean & Attribute.DefaultTo<false>;
     isSubscriptionCourse: Attribute.Boolean;
     quiz_progress: Attribute.Relation<
       'api::student-course.student-course',
