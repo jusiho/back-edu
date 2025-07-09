@@ -42,6 +42,9 @@
     },
     "kommoTag": {
       "type": "integer"
+    },
+    "info_aditional": {
+      "type": "text"
     }
   }
 }

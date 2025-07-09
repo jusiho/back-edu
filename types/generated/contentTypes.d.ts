@@ -706,6 +706,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     datevivo: Attribute.DateTime;
     description: Attribute.RichText;
     duration: Attribute.Integer;
+    duration_vivo: Attribute.Integer;
     finish_date: Attribute.Date;
     finished: Attribute.Boolean & Attribute.DefaultTo<false>;
     group: Attribute.Integer;

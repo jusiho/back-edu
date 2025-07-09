@@ -197,6 +197,9 @@
       "type": "component",
       "repeatable": false,
       "component": "speach.speach"
+    },
+    "duration_vivo": {
+      "type": "integer"
     }
   }
 }
