@@ -45,6 +45,9 @@
     },
     "info_aditional": {
       "type": "text"
+    },
+    "is_discount": {
+      "type": "boolean"
     }
   }
 }
