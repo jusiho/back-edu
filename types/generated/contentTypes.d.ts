@@ -1375,7 +1375,7 @@ export interface ApiSaleSale extends Schema.CollectionType {
     is_certificate: Attribute.Boolean & Attribute.DefaultTo<false>;
     itemType: Attribute.Enumeration<['course', 'subscription']>;
     price: Attribute.Decimal;
-    subscriptionType: Attribute.Enumeration<['mounth', 'year']>;
+    subscriptionType: Attribute.Enumeration<['month', 'year']>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<'api::sale.sale', 'oneToOne', 'admin::user'> &
       Attribute.Private;
@@ -1661,6 +1661,7 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     name: Attribute.String;
     price: Attribute.Decimal;
     publishedAt: Attribute.DateTime;
+    slug: Attribute.UID<'api::subscription-plan.subscription-plan', 'name'>;
     student_courses: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
       'oneToMany',

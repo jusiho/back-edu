@@ -45,7 +45,7 @@
     "subscriptionType": {
       "type": "enumeration",
       "enum": [
-        "mounth",
+        "month",
         "year"
       ]
     }

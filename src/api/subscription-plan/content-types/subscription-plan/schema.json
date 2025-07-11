@@ -38,6 +38,10 @@
       "relation": "manyToMany",
       "target": "api::course.course",
       "inversedBy": "subscription_plans"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
