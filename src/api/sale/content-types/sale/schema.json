@@ -34,6 +34,20 @@
     "is_certificate": {
       "type": "boolean",
       "default": false
+    },
+    "itemType": {
+      "type": "enumeration",
+      "enum": [
+        "course",
+        "subscription"
+      ]
+    },
+    "subscriptionType": {
+      "type": "enumeration",
+      "enum": [
+        "mounth",
+        "year"
+      ]
     }
   }
 }
