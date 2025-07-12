@@ -17,16 +17,16 @@ export default {
     const { subscription_plan, isSubscriptionCourse } = data;
 
     if (isSubscriptionCourse && subscription_plan.connect.length > 0) {
-      const entrySubscription = await strapi.entityService.findOne(
-        "api::subscription-plan.subscription-plan",
-        subscription_plan.connect[0].id,
-        {
-          fields: ["name", "description"],
-          populate: { student_courses: true },
-        }
-      );
+      // const entrySubscription = await strapi.entityService.findOne(
+      //   "api::subscription-plan.subscription-plan",
+      //   subscription_plan.connect[0].id,
+      //   {
+      //     fields: ["name", "description"],
+      //     populate: { student_courses: true },
+      //   }
+      // );
 
-      console.log("entrySubscription : ", entrySubscription);
+      // console.log("entrySubscription : ", entrySubscription);
     }
   },
 };

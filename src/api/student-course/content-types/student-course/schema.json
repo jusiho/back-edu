@@ -91,15 +91,15 @@
     "subscriptionEndDate": {
       "type": "date"
     },
-    "subscription_plan": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::subscription-plan.subscription-plan",
-      "inversedBy": "student_courses"
-    },
     "is_instructor_view": {
       "type": "boolean",
       "default": false
+    },
+    "subscription_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "student_courses"
     }
   }
 }

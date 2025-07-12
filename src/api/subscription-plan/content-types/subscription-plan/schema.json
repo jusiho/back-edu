@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -18,30 +18,13 @@
     "price": {
       "type": "decimal"
     },
-    "durationInMonths": {
+    "duration_in_months": {
       "type": "integer"
     },
-    "description": {
-      "type": "text"
-    },
-    "active": {
-      "type": "boolean"
-    },
-    "student_courses": {
+    "course_id": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::student-course.student-course",
-      "mappedBy": "subscription_plan"
-    },
-    "courses": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::course.course",
-      "inversedBy": "subscription_plans"
-    },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
+      "relation": "oneToOne",
+      "target": "api::course.course"
     }
   }
 }

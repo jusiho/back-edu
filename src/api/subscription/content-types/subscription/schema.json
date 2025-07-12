@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "subscription"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "expired",
+        "canceled"
+      ]
+    },
+    "start_at": {
+      "type": "datetime"
+    },
+    "end_at": {
+      "type": "datetime"
+    },
+    "student_courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-course.student-course",
+      "mappedBy": "subscription_id"
+    },
+    "subscription_plan_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subscription-plan.subscription-plan"
+    }
+  }
+}

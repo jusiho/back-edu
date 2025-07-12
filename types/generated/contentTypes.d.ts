@@ -762,11 +762,6 @@ export interface ApiCourseCourse extends Schema.CollectionType {
     slug: Attribute.UID<'api::course.course', 'title'>;
     speach: Attribute.Component<'speach.speach'>;
     studentsqty: Attribute.String;
-    subscription_plans: Attribute.Relation<
-      'api::course.course',
-      'manyToMany',
-      'api::subscription-plan.subscription-plan'
-    >;
     teacher: Attribute.String;
     title: Attribute.String;
     type: Attribute.Enumeration<['course', 'protocol']>;
@@ -1599,10 +1594,10 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::quiz-progress.quiz-progress'
     >;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    subscription_plan: Attribute.Relation<
+    subscription_id: Attribute.Relation<
       'api::student-course.student-course',
       'manyToOne',
-      'api::subscription-plan.subscription-plan'
+      'api::subscription.subscription'
     >;
     subscriptionEndDate: Attribute.Date;
     updatedAt: Attribute.DateTime;
@@ -1640,13 +1635,12 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     singularName: 'subscription-plan';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    active: Attribute.Boolean;
-    courses: Attribute.Relation<
+    course_id: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
-      'manyToMany',
+      'oneToOne',
       'api::course.course'
     >;
     createdAt: Attribute.DateTime;
@@ -1656,17 +1650,9 @@ export interface ApiSubscriptionPlanSubscriptionPlan
       'admin::user'
     > &
       Attribute.Private;
-    description: Attribute.Text;
-    durationInMonths: Attribute.Integer;
+    duration_in_months: Attribute.Integer;
     name: Attribute.String;
     price: Attribute.Decimal;
-    publishedAt: Attribute.DateTime;
-    slug: Attribute.UID<'api::subscription-plan.subscription-plan', 'name'>;
-    student_courses: Attribute.Relation<
-      'api::subscription-plan.subscription-plan',
-      'oneToMany',
-      'api::student-course.student-course'
-    >;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
@@ -1674,6 +1660,53 @@ export interface ApiSubscriptionPlanSubscriptionPlan
       'admin::user'
     > &
       Attribute.Private;
+  };
+}
+
+export interface ApiSubscriptionSubscription extends Schema.CollectionType {
+  collectionName: 'subscriptions';
+  info: {
+    description: '';
+    displayName: 'Subscription';
+    pluralName: 'subscriptions';
+    singularName: 'subscription';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    end_at: Attribute.DateTime;
+    start_at: Attribute.DateTime;
+    status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
+    student_courses: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToMany',
+      'api::student-course.student-course'
+    >;
+    subscription_plan_id: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'api::subscription-plan.subscription-plan'
+    >;
+    updatedAt: Attribute.DateTime;
+    updatedBy: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    user_id: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -2315,6 +2348,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::student-course.student-course'
     >;
     student_info: Attribute.Component<'student.student'>;
+    subscription: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::subscription.subscription'
+    >;
     UID: Attribute.UID<'plugin::users-permissions.user', 'username'>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
@@ -2371,6 +2409,7 @@ declare module '@strapi/types' {
       'api::setting.setting': ApiSettingSetting;
       'api::student-course.student-course': ApiStudentCourseStudentCourse;
       'api::subscription-plan.subscription-plan': ApiSubscriptionPlanSubscriptionPlan;
+      'api::subscription.subscription': ApiSubscriptionSubscription;
       'api::video-progress.video-progress': ApiVideoProgressVideoProgress;
       'plugin::comments.comment': PluginCommentsComment;
       'plugin::comments.comment-report': PluginCommentsCommentReport;
