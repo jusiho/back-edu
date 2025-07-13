@@ -32,16 +32,16 @@
     "end_at": {
       "type": "datetime"
     },
-    "student_courses": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::student-course.student-course",
-      "mappedBy": "subscription_id"
-    },
     "subscription_plan_id": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::subscription-plan.subscription-plan"
+    },
+    "student_course_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::student-course.student-course",
+      "inversedBy": "subscription"
     }
   }
 }

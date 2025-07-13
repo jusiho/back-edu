@@ -95,11 +95,11 @@
       "type": "boolean",
       "default": false
     },
-    "subscription_id": {
+    "subscription": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::subscription.subscription",
-      "inversedBy": "student_courses"
+      "mappedBy": "student_course_id"
     }
   }
 }

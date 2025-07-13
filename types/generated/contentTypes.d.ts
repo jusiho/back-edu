@@ -1594,9 +1594,9 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::quiz-progress.quiz-progress'
     >;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    subscription_id: Attribute.Relation<
+    subscription: Attribute.Relation<
       'api::student-course.student-course',
-      'manyToOne',
+      'oneToOne',
       'api::subscription.subscription'
     >;
     subscriptionEndDate: Attribute.Date;
@@ -1685,9 +1685,9 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     end_at: Attribute.DateTime;
     start_at: Attribute.DateTime;
     status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
-    student_courses: Attribute.Relation<
+    student_course_id: Attribute.Relation<
       'api::subscription.subscription',
-      'oneToMany',
+      'oneToOne',
       'api::student-course.student-course'
     >;
     subscription_plan_id: Attribute.Relation<
