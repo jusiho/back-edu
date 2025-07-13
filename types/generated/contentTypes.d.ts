@@ -1653,6 +1653,7 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     duration_in_months: Attribute.Integer;
     name: Attribute.String;
     price: Attribute.Decimal;
+    slug: Attribute.UID<'api::subscription-plan.subscription-plan', 'name'>;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::subscription-plan.subscription-plan',

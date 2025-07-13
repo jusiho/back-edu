@@ -25,6 +25,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::course.course"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name"
     }
   }
 }
