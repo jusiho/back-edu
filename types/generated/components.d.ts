@@ -155,6 +155,9 @@ export interface SpeachSpeach extends Schema.Component {
     icon: 'cube';
   };
   attributes: {
+    certificate_price_co: Attribute.Decimal;
+    certificate_price_mx: Attribute.Decimal;
+    certificate_price_pe: Attribute.Decimal;
     dates_summary: Attribute.String;
     discount_pct: Attribute.Decimal;
     info_aditional: Attribute.Text;

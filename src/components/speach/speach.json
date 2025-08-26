@@ -48,6 +48,15 @@
     },
     "is_discount": {
       "type": "boolean"
+    },
+    "certificate_price_pe": {
+      "type": "decimal"
+    },
+    "certificate_price_mx": {
+      "type": "decimal"
+    },
+    "certificate_price_co": {
+      "type": "decimal"
     }
   }
 }
