@@ -1500,6 +1500,7 @@ export interface ApiSettingSetting extends Schema.SingleType {
       'admin::user'
     > &
       Attribute.Private;
+    data_company: Attribute.JSON;
     example_certificate: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;

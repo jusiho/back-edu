@@ -96,6 +96,9 @@
     },
     "odooConfig": {
       "type": "json"
+    },
+    "data_company": {
+      "type": "json"
     }
   }
 }
