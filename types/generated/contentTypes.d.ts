@@ -1517,6 +1517,7 @@ export interface ApiSettingSetting extends Schema.SingleType {
           preset: 'default';
         }
       >;
+    social_links: Attribute.JSON;
     terms_of_service: Attribute.RichText &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',

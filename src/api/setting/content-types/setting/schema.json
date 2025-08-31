@@ -99,6 +99,9 @@
     },
     "data_company": {
       "type": "json"
+    },
+    "social_links": {
+      "type": "json"
     }
   }
 }
