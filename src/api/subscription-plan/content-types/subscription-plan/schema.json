@@ -21,7 +21,7 @@
     "duration_in_months": {
       "type": "integer"
     },
-    "course_id": {
+    "courses": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::course.course"
@@ -29,6 +29,12 @@
     "slug": {
       "type": "uid",
       "targetField": "name"
+    },
+    "is_active": {
+      "type": "boolean"
+    },
+    "trial_days": {
+      "type": "integer"
     }
   }
 }

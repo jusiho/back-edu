@@ -1596,11 +1596,6 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'api::quiz-progress.quiz-progress'
     >;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    subscription: Attribute.Relation<
-      'api::student-course.student-course',
-      'oneToOne',
-      'api::subscription.subscription'
-    >;
     subscriptionEndDate: Attribute.Date;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
@@ -1640,7 +1635,7 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     draftAndPublish: false;
   };
   attributes: {
-    course_id: Attribute.Relation<
+    courses: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
       'oneToOne',
       'api::course.course'
@@ -1653,9 +1648,11 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     > &
       Attribute.Private;
     duration_in_months: Attribute.Integer;
+    is_active: Attribute.Boolean;
     name: Attribute.String;
     price: Attribute.Decimal;
     slug: Attribute.UID<'api::subscription-plan.subscription-plan', 'name'>;
+    trial_days: Attribute.Integer;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
@@ -1678,6 +1675,9 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
+    auto_renew: Attribute.Boolean;
+    cancel_at_period_end: Attribute.DateTime;
+    canceled_at: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::subscription.subscription',
@@ -1685,19 +1685,21 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    end_at: Attribute.DateTime;
-    start_at: Attribute.DateTime;
+    current_period_end: Attribute.DateTime;
+    current_period_start: Attribute.DateTime;
+    end_date: Attribute.DateTime;
+    metadata: Attribute.JSON;
+    payment_method: Attribute.Enumeration<['paypal', 'izipay']>;
+    start_date: Attribute.DateTime;
     status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
-    student_course_id: Attribute.Relation<
-      'api::subscription.subscription',
-      'oneToOne',
-      'api::student-course.student-course'
-    >;
     subscription_plan_id: Attribute.Relation<
       'api::subscription.subscription',
       'oneToOne',
       'api::subscription-plan.subscription-plan'
     >;
+    transaction_id: Attribute.String;
+    trial_end: Attribute.DateTime;
+    trial_start: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
       'api::subscription.subscription',

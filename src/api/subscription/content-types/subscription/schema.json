@@ -26,10 +26,10 @@
         "canceled"
       ]
     },
-    "start_at": {
+    "start_date": {
       "type": "datetime"
     },
-    "end_at": {
+    "end_date": {
       "type": "datetime"
     },
     "subscription_plan_id": {
@@ -37,11 +37,39 @@
       "relation": "oneToOne",
       "target": "api::subscription-plan.subscription-plan"
     },
-    "student_course_id": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::student-course.student-course",
-      "inversedBy": "subscription"
+    "canceled_at": {
+      "type": "datetime"
+    },
+    "trial_start": {
+      "type": "datetime"
+    },
+    "trial_end": {
+      "type": "datetime"
+    },
+    "payment_method": {
+      "type": "enumeration",
+      "enum": [
+        "paypal",
+        "izipay"
+      ]
+    },
+    "transaction_id": {
+      "type": "string"
+    },
+    "auto_renew": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "current_period_start": {
+      "type": "datetime"
+    },
+    "current_period_end": {
+      "type": "datetime"
+    },
+    "cancel_at_period_end": {
+      "type": "datetime"
     }
   }
 }

@@ -94,12 +94,6 @@
     "is_instructor_view": {
       "type": "boolean",
       "default": false
-    },
-    "subscription": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::subscription.subscription",
-      "mappedBy": "student_course_id"
     }
   }
 }
