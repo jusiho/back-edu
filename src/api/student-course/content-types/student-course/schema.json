@@ -97,6 +97,13 @@
     },
     "expires_at": {
       "type": "date"
+    },
+    "source": {
+      "type": "enumeration",
+      "enum": [
+        "purchase",
+        "subscription"
+      ]
     }
   }
 }

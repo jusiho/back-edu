@@ -1596,6 +1596,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'oneToMany',
       'api::quiz-progress.quiz-progress'
     >;
+    source: Attribute.Enumeration<['purchase', 'subscription']>;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
     subscriptionEndDate: Attribute.Date;
     updatedAt: Attribute.DateTime;
