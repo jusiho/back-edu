@@ -1693,6 +1693,11 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     payment_method: Attribute.Enumeration<['paypal', 'izipay']>;
     start_date: Attribute.DateTime;
     status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
+    student_course_id: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToMany',
+      'api::student-course.student-course'
+    >;
     subscription_plan_id: Attribute.Relation<
       'api::subscription.subscription',
       'oneToOne',
