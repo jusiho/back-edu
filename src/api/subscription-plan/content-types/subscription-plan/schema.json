@@ -35,6 +35,14 @@
     },
     "trial_days": {
       "type": "integer"
+    },
+    "access_type": {
+      "type": "enumeration",
+      "enum": [
+        "all_recorded",
+        "selected_courses",
+        "by_category"
+      ]
     }
   }
 }

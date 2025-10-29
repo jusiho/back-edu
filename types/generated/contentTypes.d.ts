@@ -1636,6 +1636,9 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     draftAndPublish: false;
   };
   attributes: {
+    access_type: Attribute.Enumeration<
+      ['all_recorded', 'selected_courses', 'by_category']
+    >;
     courses: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
       'oneToOne',
@@ -1676,9 +1679,6 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    access_type: Attribute.Enumeration<
-      ['all_recorded', 'selected_courses', 'by_category']
-    >;
     auto_renew: Attribute.Boolean;
     cancel_at_period_end: Attribute.DateTime;
     canceled_at: Attribute.DateTime;
