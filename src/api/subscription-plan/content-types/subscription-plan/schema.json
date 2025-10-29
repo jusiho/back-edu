@@ -43,6 +43,20 @@
         "selected_courses",
         "by_category"
       ]
+    },
+    "features": {
+      "type": "json"
+    },
+    "is_popular": {
+      "type": "boolean"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category"
+    },
+    "max_courses": {
+      "type": "integer"
     }
   }
 }

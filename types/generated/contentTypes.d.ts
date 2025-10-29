@@ -1640,6 +1640,11 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     access_type: Attribute.Enumeration<
       ['all_recorded', 'selected_courses', 'by_category']
     >;
+    categories: Attribute.Relation<
+      'api::subscription-plan.subscription-plan',
+      'oneToMany',
+      'api::category.category'
+    >;
     courses: Attribute.Relation<
       'api::subscription-plan.subscription-plan',
       'oneToOne',
@@ -1653,7 +1658,10 @@ export interface ApiSubscriptionPlanSubscriptionPlan
     > &
       Attribute.Private;
     duration_in_months: Attribute.Integer;
+    features: Attribute.JSON;
     is_active: Attribute.Boolean;
+    is_popular: Attribute.Boolean;
+    max_courses: Attribute.Integer;
     name: Attribute.String;
     price: Attribute.Decimal;
     slug: Attribute.UID<'api::subscription-plan.subscription-plan', 'name'>;
