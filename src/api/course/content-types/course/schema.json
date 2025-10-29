@@ -194,6 +194,9 @@
     },
     "duration_vivo": {
       "type": "integer"
+    },
+    "available_in_subscriptions": {
+      "type": "boolean"
     }
   }
 }

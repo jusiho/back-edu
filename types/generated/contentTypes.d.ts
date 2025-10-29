@@ -687,6 +687,7 @@ export interface ApiCourseCourse extends Schema.CollectionType {
   };
   attributes: {
     auto_certificate: Attribute.Boolean & Attribute.DefaultTo<false>;
+    available_in_subscriptions: Attribute.Boolean;
     brochure_file: Attribute.Media<'images' | 'files'>;
     brochure_link: Attribute.String;
     categories: Attribute.Relation<
