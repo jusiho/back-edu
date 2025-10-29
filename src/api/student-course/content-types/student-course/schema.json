@@ -94,6 +94,9 @@
     "is_instructor_view": {
       "type": "boolean",
       "default": false
+    },
+    "expires_at": {
+      "type": "date"
     }
   }
 }

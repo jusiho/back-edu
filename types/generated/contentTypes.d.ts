@@ -1573,6 +1573,7 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    expires_at: Attribute.Date;
     final_grade: Attribute.Decimal;
     final_project: Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
