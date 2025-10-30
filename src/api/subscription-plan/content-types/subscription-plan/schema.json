@@ -57,6 +57,12 @@
     },
     "max_courses": {
       "type": "integer"
+    },
+    "display_order": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }

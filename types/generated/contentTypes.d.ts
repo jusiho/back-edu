@@ -1658,6 +1658,8 @@ export interface ApiSubscriptionPlanSubscriptionPlan
       'admin::user'
     > &
       Attribute.Private;
+    description: Attribute.Text;
+    display_order: Attribute.Integer;
     duration_in_months: Attribute.Integer;
     features: Attribute.JSON;
     is_active: Attribute.Boolean;
