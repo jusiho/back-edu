@@ -48,6 +48,12 @@
         "month",
         "year"
       ]
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "itemTitle": {
+      "type": "string"
     }
   }
 }

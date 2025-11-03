@@ -1369,6 +1369,8 @@ export interface ApiSaleSale extends Schema.CollectionType {
       'api::invoice.invoice'
     >;
     is_certificate: Attribute.Boolean & Attribute.DefaultTo<false>;
+    itemId: Attribute.String;
+    itemTitle: Attribute.String;
     itemType: Attribute.Enumeration<['course', 'subscription']>;
     price: Attribute.Decimal;
     subscriptionType: Attribute.Enumeration<['month', 'year']>;
