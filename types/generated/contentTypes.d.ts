@@ -1706,6 +1706,7 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     current_period_end: Attribute.DateTime;
     current_period_start: Attribute.DateTime;
     end_date: Attribute.DateTime;
+    external_subscription_id: Attribute.String;
     metadata: Attribute.JSON;
     payment_method: Attribute.Enumeration<['paypal', 'izipay']>;
     start_date: Attribute.DateTime;
