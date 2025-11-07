@@ -96,7 +96,7 @@
       "default": false
     },
     "expires_at": {
-      "type": "date"
+      "type": "datetime"
     },
     "source": {
       "type": "enumeration",
