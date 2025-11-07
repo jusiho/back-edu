@@ -1601,6 +1601,11 @@ export interface ApiStudentCourseStudentCourse extends Schema.CollectionType {
     >;
     source: Attribute.Enumeration<['purchase', 'subscription']>;
     state: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    subscription: Attribute.Relation<
+      'api::student-course.student-course',
+      'manyToOne',
+      'api::subscription.subscription'
+    >;
     subscriptionEndDate: Attribute.Date;
     updatedAt: Attribute.DateTime;
     updatedBy: Attribute.Relation<
@@ -1712,6 +1717,11 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     start_date: Attribute.DateTime;
     status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
     student_course_id: Attribute.Relation<
+      'api::subscription.subscription',
+      'oneToMany',
+      'api::student-course.student-course'
+    >;
+    student_courses: Attribute.Relation<
       'api::subscription.subscription',
       'oneToMany',
       'api::student-course.student-course'

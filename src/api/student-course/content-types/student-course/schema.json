@@ -104,6 +104,12 @@
         "purchase",
         "subscription"
       ]
+    },
+    "subscription": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subscription.subscription",
+      "inversedBy": "student_courses"
     }
   }
 }

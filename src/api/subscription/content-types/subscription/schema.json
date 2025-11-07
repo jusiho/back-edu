@@ -78,6 +78,12 @@
     },
     "external_subscription_id": {
       "type": "string"
+    },
+    "student_courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-course.student-course",
+      "mappedBy": "subscription"
     }
   }
 }
