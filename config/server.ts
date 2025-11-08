@@ -1,3 +1,5 @@
+import cronTask from './cron-task';
+
 export default ({ env }) => ({
   host: env("HOST", "0.0.0.0"),
   port: env.int("PORT", 1337),
@@ -8,5 +10,9 @@ export default ({ env }) => ({
   proxy: env.bool("IS_PROXIED", true),
   webhooks: {
     populateRelations: env.bool("WEBHOOKS_POPULATE_RELATIONS", false),
+  },
+  cron: {
+    enabled: true,
+    tasks: cronTask,
   },
 });
