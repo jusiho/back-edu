@@ -1713,7 +1713,7 @@ export interface ApiSubscriptionSubscription extends Schema.CollectionType {
     end_date: Attribute.DateTime;
     external_subscription_id: Attribute.String;
     metadata: Attribute.JSON;
-    payment_method: Attribute.Enumeration<['paypal', 'izipay']>;
+    payment_method: Attribute.Enumeration<['manual_admin', 'paypal', 'izipay']>;
     start_date: Attribute.DateTime;
     status: Attribute.Enumeration<['active', 'expired', 'canceled']>;
     student_course_id: Attribute.Relation<

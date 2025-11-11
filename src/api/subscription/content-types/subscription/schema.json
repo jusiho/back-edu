@@ -49,6 +49,7 @@
     "payment_method": {
       "type": "enumeration",
       "enum": [
+        "manual_admin",
         "paypal",
         "izipay"
       ]
